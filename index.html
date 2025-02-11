@@ -3,56 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quentin Rolland - Resume</title>
+    <title>Quentin Rolland - Robotics Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f4;
-            color: #333;
+            background: #0A192F;
+            color: #64FFDA;
+            text-align: center;
         }
         .container {
             width: 80%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 50px auto;
-            background: #fff;
+            background: #112240;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
             border-radius: 10px;
         }
         h1, h2 {
-            text-align: center;
+            color: #64FFDA;
         }
         .section {
             margin-bottom: 20px;
         }
         .links a {
             display: block;
-            color: #007BFF;
+            color: #64FFDA;
             text-decoration: none;
             margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+        .links a:hover {
+            color: #FFD700;
+        }
+        .button {
+            background: #64FFDA;
+            color: #0A192F;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #FFD700;
+        }
+        .robot-image {
+            width: 150px;
+            height: auto;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Quentin Rolland</h1>
-        <p>Email: <a href="mailto:quentin.rolland@ensea.fr">quentin.rolland@ensea.fr</a></p>
+        <p>Robotics & Deep Learning Enthusiast</p>
+        <p>Email: <a href="mailto:quentin.rolland2@cea.fr">quentin.rolland2@cea.fr</a></p>
         <p>Phone: 06 95 66 38 68</p>
         
         <div class="section">
-            <h2>Profile</h2>
-            <p>PhD student at CEA List in collaboration with INRIA Nancy. Specializing in mechatronics, deep learning, and computer vision.</p>
+            <h2>About Me</h2>
+            <p>PhD student at CEA List in collaboration with INRIA Nancy, specializing in robotics, deep learning, and computer vision.</p>
         </div>
         
         <div class="section">
-            <h2>Languages</h2>
-            <p>French (Native), English (C1 - TOEFL 103/120), Spanish (B1), Russian (A1)</p>
+            <h2>Projects</h2>
+            <p>Autonomous Car Competition - ENS Saclay (2nd place)</p>
+            <p>CanSat CNES Challenge (3rd place)</p>
+            <p>Mini-Aptéros - CNES Supported Rocket Project</p>
+            <img src="images/robot2.svg" alt="Advanced Robot" class="robot-image">
         </div>
         
         <div class="section">
-            <h2>Links</h2>
+            <h2>Skills</h2>
+            <p>C/C++, Python, ROS, MATLAB, STM32, FreeRTOS, PyTorch, Pandas</p>
+        </div>
+        
+        <div class="section">
+            <h2>Connect with Me</h2>
             <div class="links">
                 <a href="https://linkedin.com/in/quentinrolland">LinkedIn</a>
                 <a href="https://github.com/quentinRolld">GitHub</a>
@@ -60,27 +92,7 @@
             </div>
         </div>
         
-        <div class="section">
-            <h2>Skills</h2>
-            <p><strong>Technical:</strong> C/C++, Python, ROS, MATLAB, STM32, FreeRTOS, PyTorch, Pandas</p>
-            <p><strong>Soft Skills:</strong> Curious, Dynamic, Thoughtful, Autonomous</p>
-        </div>
-        
-        <div class="section">
-            <h2>Education</h2>
-            <p><strong>PhD - Robotics & Computer Vision</strong> - CEA Saclay, INRIA Lorraine (2024-2027)</p>
-            <p><strong>MSc - Robotics & Deep Learning</strong> - Sorbonne University (2022-2024)</p>
-            <p><strong>Engineering Degree - Mechatronics</strong> - ENSEA (2020-2023)</p>
-        </div>
-        
-        <div class="section">
-            <h2>Experience</h2>
-            <p><strong>CEA Saclay</strong> - Research Internship (Feb-Aug 2024)</p>
-            <p>Worked on imitation learning for robotics, deep learning, and reinforcement learning.</p>
-            <p><strong>CEA Grenoble</strong> - Engineer Internship (May-Aug 2022)</p>
-            <p>Developed a real-time embedded system for a fuel cell.</p>
-        </div>
+        <button class="button">Download CV</button>
     </div>
 </body>
 </html>
-
