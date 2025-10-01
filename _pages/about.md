@@ -2,14 +2,14 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>PhD candidate - CEA List - INRIA Nancy</a>.
+subtitle: <a href='#'>PhD candidate - CEA List - INRIA Nancy</a>
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: true # crops the image to make it circular
   more_info: >
-    <p>Centre d'intégration Nano-INNOV</p>
+    <p>Centre CEA Nano-INNOV</p>
     <p>2 Boulevard Thomas Gobert</p>
     <p>91120 Palaiseau, FRANCE</p>
 
@@ -39,3 +39,5 @@ I am a French PhD candidate at CEA List Saclay, in collaboration with INRIA Nanc
 [Linkedin](https://linkedin.com/in/quentinrolland) - 
 [Github](https://github.com/quentinRolld) - 
 [X](https://x.com/quentin_rollnd)
+
+contact: quentin.rolland2@cea.fr
