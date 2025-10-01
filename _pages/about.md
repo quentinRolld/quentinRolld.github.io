@@ -2,16 +2,16 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: <a href='#'>PhD candidate - CEA List - INRIA Nancy</a>.
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: true # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Centre d'intégration Nano-INNOV</p>
+    <p>2 Boulevard Thomas Gobert</p>
+    <p>91120 Palaiseau, FRANCE</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -35,10 +35,6 @@ Link to your social media connections, too. This theme is set up to use [Font Aw
 -->
 
 I'm a French PhD student at CEA List in Saclay, in collaboration with INRIA Nancy. I specialize in robotics, deep learning and computer vision. My thesis project focuses on imitation learning for robotics. Our aim is to find ways of improving current imitation learning policies using one class anomaly detection methods.
-
-Centre d'intégration Nano-INNOV
-2 Boulevard Thomas Gobert
-91120 Palaiseau, FRANCE
 
 [Linkedin](https://linkedin.com/in/quentinrolland)
 [Github](https://github.com/quentinRolld)
