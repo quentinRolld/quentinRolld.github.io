@@ -440,16 +440,136 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/Kafka_sur_le_rivage/";
-            },},{id: "books-the-godfather",
-          title: 'The Godfather',
+            },},{id: "books-la-vie-devant-soi",
+          title: 'La vie devant soi',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/La_vie_devant_soi/";
+            },},{id: "books-les-cavernes-d-39-acier",
+          title: 'Les cavernes d&amp;#39;acier',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2010/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2011/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2012/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2013/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2014/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2015/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2016/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2017/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2018/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2019/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2020/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2021/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2022/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain%20copy%2023/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/Leon_africain/";
+            },},{id: "books-leon-l-39-africain",
+          title: 'Leon l&amp;#39;africain',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Les_racines_du_ciel/";
+            },},{id: "books-les-robots",
+          title: 'Les robots',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Les_robots_1/";
+            },},{id: "books-un-défilé-de-robots",
+          title: 'Un défilé de robots',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Les_robots_2/";
+            },},{id: "books-sinouhé-l-39-egyptien-i",
+          title: 'Sinouhé l&amp;#39;Egyptien I',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Sinouhe_egyptien/";
+            },},{id: "books-chien-blanc",
+          title: 'Chien blanc',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/chien_blanc/";
+            },},{id: "books-education-européenne",
+          title: 'Education européenne',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/education_europeenne/";
+            },},{id: "books-les-racines-du-ciel",
+          title: 'Les racines du ciel',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/les_cerfsvolants/";
+            },},{id: "books-les-oiseaux-iront-mourir-au-perou",
+          title: 'Les oiseaux iront mourir au Perou',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/oiseaux_perou/";
             },},{id: "books-petit-pays",
           title: 'Petit Pays',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/petit_pays/";
+            },},{id: "books-promesse-de-l-39-aube",
+          title: 'Promesse de l&amp;#39;aube',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/promesse_de_aube/";
             },},{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
