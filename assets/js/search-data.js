@@ -435,7 +435,22 @@ ninja.data = [{
             window.location.href = "/blog/2015/formatting-and-links/";
           
         },
-      },{id: "books-the-godfather",
+      },{id: "books-kafka-sur-le-rivage",
+          title: 'Kafka sur le rivage',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Kafka_sur_le_rivage/";
+            },},{id: "books-the-godfather",
+          title: 'The Godfather',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Leon_africain/";
+            },},{id: "books-petit-pays",
+          title: 'Petit Pays',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/petit_pays/";
+            },},{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
