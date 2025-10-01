@@ -1,81 +1,53 @@
 ---
 layout: page
-title: project 1
-description: with background image
-img: assets/img/12.jpg
+title: CoVAPSy
+description: automous car race
+img: assets/img/cars.jpeg
 importance: 1
 category: work
 related_publications: true
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+In 2024, ENS Paris Saclay is organizing a new edition of its robotics competition, during which teams of students from different schools (ENS, Centrale, ENSTA, Institut Villebon Charpak, IUT de Cachan, etc.) compete in an autonomous car race on a standard track of unknown shape. The vehicle is identical for all teams (it is the chassis of a remote-controlled car) and can be equipped with multiple sensors (LIDAR, cameras, etc.) to perform the task required: complete 3 laps of the track as quickly as possible, avoiding the other cars and in the shortest possible time. The vehicle must operate completely autonomously: once the race has started, no control communication to the vehicle is allowed.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+The architecture selected is based on ROS, and enables real-time control of the vehicle's on-board electronics (speed control, perception of obstacles via "time of flight" sensors, LIDAR, etc.).. Our priority has been to document the prototype capabilities and handling, and to work on new navigation algorithms based on the vehicle's perceptive capabilities. In particular, we'll be working on the vision part of the system, which is still largely under-exploited, to perform all or part of the tasks involved in obstacle detection, navigation and so on.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+We have studied different approaches towards obstacle detection and navigation: Including a deep learning approach (segmentation, to determine the type of obstacle and the procedure to follow) as well as SLAM and control. Here is the link to our <a href="https://github.com/SU-Bolides/Course_2024">project</a>.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/car_elec_schema.jpg" title="schema of the electonic structure" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/car_dimensions.png" title="schema of the car dimensions" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
+    On the right, one can observe the standard chassis with standard shape and dimensions. On the left is the simplified electronic structure of our prototype.
 </div>
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/car_circuit.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    This image can also have a caption. It's like magic.
+    In order to train our prototype properly for the race, we have built a racetrack. Once the prototype in working order (SLAM+control), we used this track to train the the detection of obstacles algorithms of the module.
 </div>
 
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
-Say you wanted to write a bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+
+We finished second on the podium! And won the innovation award for our SLAM based method.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/car_circuit.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+    In order to train our prototype properly for the race, we have built a racetrack. Once the prototype in working order (SLAM+control), we used this track to train the the detection of obstacles algorithms of the module.
 </div>
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
 
-{% raw %}
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
 
-{% endraw %}
