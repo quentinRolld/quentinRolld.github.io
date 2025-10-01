@@ -41,11 +41,11 @@ We finished second on the podium! And won the innovation award for our SLAM base
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/car_circuit.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/cars_ens_pic.jpg" title="podium picture" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    In order to train our prototype properly for the race, we have built a racetrack. Once the prototype in working order (SLAM+control), we used this track to train the the detection of obstacles algorithms of the module.
+                        
 </div>
 
 
