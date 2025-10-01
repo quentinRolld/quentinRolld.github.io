@@ -435,7 +435,12 @@ ninja.data = [{
             window.location.href = "/blog/2015/formatting-and-links/";
           
         },
-      },{id: "books-kafka-sur-le-rivage",
+      },{id: "books-1984",
+          title: '1984',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/1984/";
+            },},{id: "books-kafka-sur-le-rivage",
           title: 'Kafka sur le rivage',
           description: "",
           section: "Books",handler: () => {
@@ -445,83 +450,23 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/La_vie_devant_soi/";
-            },},{id: "books-les-cavernes-d-39-acier",
-          title: 'Les cavernes d&amp;#39;acier',
+            },},{id: "books-le-grand-meaulnes",
+          title: 'Le grand Meaulnes',
           description: "",
           section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2010/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2011/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2012/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2013/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2014/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2015/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2016/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2017/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2018/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2019/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2020/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2021/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2022/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/Leon_africain%20copy%2023/";
+              window.location.href = "/books/Le_grand_meaulnes/";
             },},{id: "books-leon-l-39-africain",
           title: 'Leon l&amp;#39;africain',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/Leon_africain/";
-            },},{id: "books-leon-l-39-africain",
-          title: 'Leon l&amp;#39;africain',
+            },},{id: "books-les-cerfs-volants",
+          title: 'Les cerfs-volants',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Les_cerfs_volants/";
+            },},{id: "books-les-racines-du-ciel",
+          title: 'Les racines du ciel',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/Les_racines_du_ciel/";
@@ -535,11 +480,51 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/Les_robots_2/";
+            },},{id: "books-les-cavernes-d-39-acier",
+          title: 'Les cavernes d&amp;#39;acier',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Les_robots_3/";
+            },},{id: "books-face-aux-feux-du-soleil",
+          title: 'Face aux feux du soleil',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Les_robots_4/";
+            },},{id: "books-les-robots-de-l-39-aube",
+          title: 'Les robots de l&amp;#39;aube',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Les_robots_5/";
+            },},{id: "books-les-robots-et-l-39-empire",
+          title: 'Les robots et l&amp;#39;empire',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/Les_robots_6/";
+            },},{id: "books-reinforcement-learning-an-introduction",
+          title: 'Reinforcement Learning, an introduction',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/RL/";
             },},{id: "books-sinouhé-l-39-egyptien-i",
           title: 'Sinouhé l&amp;#39;Egyptien I',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/Sinouhe_egyptien/";
+            },},{id: "books-des-fleurs-pour-algernon",
+          title: 'des fleurs pour algernon',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/algernon/";
+            },},{id: "books-brave-new-world",
+          title: 'Brave new world',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/brave_new_world/";
+            },},{id: "books-la-chartreuse-de-parme",
+          title: 'La chartreuse de parme',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/chartreuse/";
             },},{id: "books-chien-blanc",
           title: 'Chien blanc',
           description: "",
@@ -550,11 +535,21 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/education_europeenne/";
-            },},{id: "books-les-racines-du-ciel",
-          title: 'Les racines du ciel',
+            },},{id: "books-l-39-élégance-du-hérisson",
+          title: 'L&amp;#39;élégance du hérisson',
           description: "",
           section: "Books",handler: () => {
-              window.location.href = "/books/les_cerfsvolants/";
+              window.location.href = "/books/elegance_herisson/";
+            },},{id: "books-frankenstein",
+          title: 'Frankenstein',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/frankenstein/";
+            },},{id: "books-le-joueur-d-39-échecs",
+          title: 'Le joueur d&amp;#39;échecs',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/joueur_echec/";
             },},{id: "books-les-oiseaux-iront-mourir-au-perou",
           title: 'Les oiseaux iront mourir au Perou',
           description: "",
@@ -570,11 +565,6 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/promesse_de_aube/";
-            },},{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
             },},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
