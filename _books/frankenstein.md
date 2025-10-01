@@ -1,8 +1,8 @@
 ---
 layout: book-review
-title: Leon l'africain
-author: Amin Maalouf
-cover: assets/img/book_covers/leon_africain.png
+title: Frankenstein
+author: Mary Shelley
+cover: assets/img/book_covers/frankenstein.png
 olid:  # use Open Library ID to fetch cover (if no `cover` is provided)
 isbn:  # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
 categories: historical-fiction novel

@@ -1,8 +1,8 @@
 ---
 layout: book-review
-title: Leon l'africain
-author: Amin Maalouf
-cover: assets/img/book_covers/leon_africain.png
+title: Reinforcement Learning, an introduction
+author: Richard S. Sutton and Andrew G. Barto
+cover: assets/img/book_covers/RL.png
 olid:  # use Open Library ID to fetch cover (if no `cover` is provided)
 isbn:  # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
 categories: historical-fiction novel
