@@ -1,11 +1,11 @@
 ---
 layout: book-review
-title: The Godfather
-author: Mario Puzo
-cover: assets/img/book_covers/the_godfather.jpg
-olid: OL43499941M # use Open Library ID to fetch cover (if no `cover` is provided)
-isbn: 7539967447 # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
-categories: classics crime historical-fiction mystery novels thriller
+title: Leon l'africain
+author: Amin Maalouf
+cover: assets/img/book_covers/leon_africain.png
+olid:  # use Open Library ID to fetch cover (if no `cover` is provided)
+isbn:  # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
+categories: historical-fiction novel
 tags: top-100
 buy_link: https://www.amazon.com/Godfather-Deluxe-Mario-Puzo/dp/0593542592
 started: 2024-08-23

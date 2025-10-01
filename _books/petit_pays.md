@@ -5,7 +5,7 @@ author: Gael Faye
 cover: assets/img/book_covers/petit_pays.png
 olid: # use Open Library ID to fetch cover (if no `cover` is provided)
 isbn: # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
-categories: autobiography historical roman
+categories: autobiographic historical roman
 tags: top-100
 buy_link: 
 started: 2024-08-23
