@@ -2,64 +2,51 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
+      value: Quentin ROLLAND
     - name: Date of Birth
-      value: 14th March 1879
+      value: 1st May 2000
     - name: Languages
-      value: English, German
+      value: French, English, Spanish, German
 
 - title: Education
   type: time_table
   contents:
     - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+      institution: CEA - INRIA - University of Lorraine, Nancy, France
+      year: 2024 - 2027
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - ROBOTICS AND COMPUTER VISION
+        - One class anomaly detection in the context of autonomous robotics
+        
+    - title: MSC - ROBOTICS AND DEEP LEARNING
+      institution: Sorbonne University, Paris, France
+      year: 2024
       description:
-        - Description 1.
-        - Description 2.
+        - with honors
+    - title: Engineering degree - ELECTRONICS & COMPUTER SCIENCE
+      institution: ENSEA, Paris, France
+      year: 2020 - 2023
+      description:
+        - with high honors
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Teaching assistant
+      institution: ENSTA Paris, Palaiseau, FRANCE
+      year: 2025 - 2026
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
+        - Algoritmic and programmation course
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
+    - title: Internship - Master thesis
+      institution: CEA Leti, Palaiseau, FRANCE.
+      year: 2024 - 6 months
+      description: Inverse reinforcement learning and anomaly detection for robotics.
 
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+    - title: Internship - Assistant engineer
+      institution: CEA Leti, Grenoble, France
+      year: 2023 - 4 months
+      description: Development of a real-time, electonic embedded system for a fuel cell.
 
 - title: Open Source Projects
   type: time_table
@@ -71,27 +58,22 @@
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2025
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
+        - Industrial and Trustworthy AI Challenge - Welding Quality Detection
+        - 3rd place
+        - <a href="https://confianceai.github.io/Welding-Quality-Detection-Challenge/">al-folio</a>
+    - year: 2025
       items:
-        - Max Planck Medal
+      - Lerobot hackathon - Mistral AI & HuggingFace - Paris
+      - 3rd place 
+      - <a href="https://luma.com/roboticshack">al-folio</a>
+    - year: 2024
+      items:
+        - COVAPSY - Autonomous car competition - ENS Saclay
+        - 2nd place - and innovation award
+    - year: 2023
+      items:
+        - Cansat competition - CNES and Planete SCIENCE
+        - 4th place
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
