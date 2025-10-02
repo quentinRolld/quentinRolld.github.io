@@ -38,6 +38,7 @@ I am a French PhD candidate at CEA List Saclay, in collaboration with INRIA Nanc
 
 [Linkedin](https://linkedin.com/in/quentinrolland) - 
 [Github](https://github.com/quentinRolld) - 
-[X](https://x.com/quentin_rollnd)
+[X](https://x.com/quentin_rollnd) -
+[LetterBox](https://boxd.it/ccQ01)
 
 contact: quentin.rolland2@cea.fr
