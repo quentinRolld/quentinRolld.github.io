@@ -2,7 +2,7 @@
 layout: page
 title: The education project
 description: Creation of an autonomous robot with memory
-img: assets/img/laputa.jpeg
+img: assets/img/laputa.jpg
 importance: 3
 category: fun
 ---
