@@ -48,12 +48,6 @@
       year: 2023 - 4 months
       description: Development of a real-time, electonic embedded system for a fuel cell.
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
 
 - title: Honors and Awards
   type: time_table
@@ -62,12 +56,12 @@
       items:
         - Industrial and Trustworthy AI Challenge - Welding Quality Detection
         - 3rd place
-        - <a href="https://confianceai.github.io/Welding-Quality-Detection-Challenge/">al-folio</a>
+        - <a href="https://confianceai.github.io/Welding-Quality-Detection-Challenge/">website</a>
     - year: 2025
       items:
       - Lerobot hackathon - Mistral AI & HuggingFace - Paris
       - 3rd place 
-      - <a href="https://luma.com/roboticshack">al-folio</a>
+      - <a href="https://luma.com/roboticshack">website</a>
     - year: 2024
       items:
         - COVAPSY - Autonomous car competition - ENS Saclay

@@ -2,7 +2,7 @@
 layout: page
 title: Cansat
 description: automous flying robot
-img: Cansat_icon.png
+img: assets/img/Cansat_icon.png
 importance: 4
 category: fun
 ---
