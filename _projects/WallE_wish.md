@@ -2,7 +2,7 @@
 layout: page
 title: Wall-E-wish
 description: A robot to tidy my bedroom
-img: assets/img/1.jpg
+img: assets/img/wall-e-cute.gif
 importance: 3
 category: fun
 ---
