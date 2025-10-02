@@ -2,7 +2,7 @@
 layout: page
 title: mini-apteros
 description: autonomous reusable launcher
-img: assets/img/fusee_2.jpeg
+img: assets/img/fusee_1.jpeg
 importance: 2
 category: work
 giscus_comments: true
@@ -35,7 +35,7 @@ This project was proposed to us as part of our second year at ENSEA, the Nation
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/fusee_1.jpeg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/fusee_2.jpeg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
