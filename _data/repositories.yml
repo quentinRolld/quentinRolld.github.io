@@ -1,12 +1,10 @@
 github_users:
   - quentinRolld
-  - SU-Bolides
 
 repo_description_lines_max: 2
 
 github_repos:
   - quentinRolld/Robot_ILiAD
   - quentinRolld/CanSat_Project
-  - SU-Bolides/Course_2024
 
 
