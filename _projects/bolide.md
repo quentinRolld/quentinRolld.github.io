@@ -20,6 +20,12 @@ related_publications: true
   vroum vroum.
 </div>
 
+<video autoplay muted loop playsinline controls style="max-width:100%; border-radius:10px;">
+  <source src="assets/video/car_preview.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
 
 In 2024, ENS Paris Saclay is organizing a new edition of its robotics competition, during which teams of students from different schools (ENS, Centrale, ENSTA, Institut Villebon Charpak, IUT de Cachan, etc.) compete in an autonomous car race on a standard track of unknown shape. The vehicle is identical for all teams (it is the chassis of a remote-controlled car) and can be equipped with multiple sensors (LIDAR, cameras, etc.) to perform the task required: complete 3 laps of the track as quickly as possible, avoiding the other cars and in the shortest possible time. The vehicle must operate completely autonomously: once the race has started, no control communication to the vehicle is allowed.
 
