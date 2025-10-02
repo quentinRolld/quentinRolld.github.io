@@ -223,36 +223,36 @@ ninja.data = [{
           section: "News",},{id: "news-assistant-professor-at-ensta-paris-for-the-year-2025-2026",
           title: 'Assistant Professor at ENSTA Paris for the year 2025/2026',
           description: "",
-          section: "News",},{id: "projects-covapsy",
-          title: 'CoVAPSy',
-          description: "automous car race",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/1_project/";
-            },},{id: "projects-mini-apteros",
-          title: 'mini-apteros',
-          description: "autonomous reusable launcher",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/2_project/";
-            },},{id: "projects-project-3-with-very-long-name",
+          section: "News",},{id: "projects-project-3-with-very-long-name",
           title: 'project 3 with very long name',
           description: "a project that redirects to another website",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
-            },},{id: "projects-the-education-project",
-          title: 'The education project',
-          description: "Creation of an autonomous robot with memory",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_project/";
-            },},{id: "projects-wall-e-wish",
-          title: 'Wall-E-wish',
-          description: "A robot to tidy my bedroom",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/5_project/";
             },},{id: "projects-cansat",
           title: 'Cansat',
           description: "automous flying robot",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/6_project/";
+              window.location.href = "/projects/Cansat/";
+            },},{id: "projects-wall-e-wish",
+          title: 'Wall-E-wish',
+          description: "A robot to tidy my bedroom",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/WallE_wish/";
+            },},{id: "projects-bolide",
+          title: 'Bolide',
+          description: "automous car race",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/bolide/";
+            },},{id: "projects-the-education-project",
+          title: 'The education project',
+          description: "Creation of an autonomous robot with memory",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/education_project/";
+            },},{id: "projects-mini-apteros",
+          title: 'mini-apteros',
+          description: "autonomous reusable launcher",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/mini_apteros/";
             },},{
         id: 'social-email',
         title: 'email',
