@@ -243,8 +243,8 @@ ninja.data = [{
           description: "Creation of an autonomous robot with memory",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_project/";
-            },},{id: "projects-walle",
-          title: 'Walle-',
+            },},{id: "projects-wall-e-wish",
+          title: 'Wall-E-wish',
           description: "A robot to tidy my bedroom",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_project/";
