@@ -11,7 +11,7 @@ related_publications: true
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
     <video class="img-fluid rounded z-depth-1" autoplay muted loop playsinline>
-      <source src="assets/video/car_driving_preview.MOV" type="video/mov">
+      <source src="assets/video/car_preview.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
@@ -52,7 +52,7 @@ We have studied different approaches towards obstacle detection and navigation:
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
     <video class="img-fluid rounded z-depth-1" autoplay muted loop playsinline>
-      <source src="assets/video/car_test_circuit.MOV" type="video/mov">
+      <source src="assets/video/car_test_circuit.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
