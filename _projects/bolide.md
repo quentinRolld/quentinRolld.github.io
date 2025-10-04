@@ -10,7 +10,7 @@ related_publications: true
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    <video class="img-fluid rounded z-depth-1" autoplay muted loop playsinline>
+    <video class="img-fluid rounded z-depth-1" control>
       <source src="assets/video/car_preview.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -18,6 +18,15 @@ related_publications: true
 </div>
 <div class="caption">
   vroum vroum.
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include video.liquid path="assets/video/car_preview.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
+    </div>
+</div>
+<div class="caption">
+    vroum vroum
 </div>
 
 <video autoplay muted loop playsinline controls style="max-width:100%; border-radius:10px;">
