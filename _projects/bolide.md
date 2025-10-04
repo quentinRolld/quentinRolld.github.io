@@ -8,17 +8,7 @@ category: work
 related_publications: true
 ---
 
-<div class="row">
-  <div class="col-sm mt-3 mt-md-0">
-    <video class="img-fluid rounded z-depth-1" control>
-      <source src="assets/video/car_preview.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
-<div class="caption">
-  vroum vroum.
-</div>
+
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -29,10 +19,6 @@ related_publications: true
     vroum vroum
 </div>
 
-<video autoplay muted loop playsinline controls style="max-width:100%; border-radius:10px;">
-  <source src="assets/video/car_preview.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
 
 
 
@@ -64,19 +50,17 @@ We have studied different approaches towards obstacle detection and navigation:
 </div>
 
 
-<div class="row">
-  <div class="col-sm mt-3 mt-md-0">
-    <video class="img-fluid rounded z-depth-1" autoplay muted loop playsinline>
-      <source src="assets/video/car_test_circuit.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include video.liquid path="assets/video/car_test_circuit.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
+    </div>
 </div>
 <div class="caption">
   Demo of the prototype running on our custom-built racetrack.
 </div>
 
-We finished second on the podium! And won the innovation award for our SLAM based method.
+
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -84,7 +68,7 @@ We finished second on the podium! And won the innovation award for our SLAM base
     </div>
 </div>
 <div class="caption">
-                        
+  We finished second on the podium! And won the innovation award for our SLAM based method.         
 </div>
 
 
