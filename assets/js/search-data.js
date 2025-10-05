@@ -182,6 +182,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/chien_blanc/";
+            },},{id: "books-la-où-chantent-les-écrevisses",
+          title: 'La où chantent les écrevisses',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/ecrevisses/";
             },},{id: "books-education-européenne",
           title: 'Education européenne',
           description: "",
