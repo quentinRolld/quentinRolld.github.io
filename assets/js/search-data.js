@@ -228,16 +228,16 @@ ninja.data = [{
           section: "News",},{id: "news-assistant-professor-at-ensta-paris-for-the-year-2025-2026",
           title: 'Assistant Professor at ENSTA Paris for the year 2025/2026',
           description: "",
-          section: "News",},{id: "projects-project-3-with-very-long-name",
-          title: 'project 3 with very long name',
-          description: "a project that redirects to another website",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/3_project/";
-            },},{id: "projects-cansat",
+          section: "News",},{id: "projects-cansat",
           title: 'Cansat',
           description: "automous flying robot",
           section: "Projects",handler: () => {
               window.location.href = "/projects/Cansat/";
+            },},{id: "projects-cansat",
+          title: 'Cansat',
+          description: "Mistral AI - Huggingface - Robotics Hackathon",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/Mistral_hackathon/";
             },},{id: "projects-wall-e-wish",
           title: 'Wall-E-wish',
           description: "A robot to tidy my bedroom",
