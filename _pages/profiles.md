@@ -16,7 +16,7 @@ profiles:
     more_info: >
       <p></p>
 
-  - align: left
+  - align: right
     image: 
     content: about_jean_baptiste.md
     image_circular: false # crops the image to make it circular
