@@ -1,8 +1,8 @@
 ---
 layout: post
-date: January 2026
+date: September 2025
 inline: true
 related_posts: false
 ---
 
-Submission accepted at ICRA 2026 !!!
+Submission to ICRA 2026 conference
