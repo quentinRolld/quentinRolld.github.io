@@ -88,9 +88,44 @@ $max-content-width: {{ site.max_width }};
 
 
 
-/* Effet au survol : on stabilise et on zoome légèrement */
-.profile img.rounded-circle:hover {
-  transform: scale(1.05);
-  animation-play-state: paused; /* La forme se fige quand on survole */
+/* Le conteneur doit être en relative pour positionner les ondes */
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+/* Création de l'onde avec un pseudo-élément */
+.avatar-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--global-theme-color); /* Utilise la couleur principale du thème */
+    opacity: 0.4;
+    z-index: -1; /* Derrière l'image */
+    transition: all 0.3s ease;
+}
+
+/* Animation au survol */
+.avatar-container:hover::before {
+    animation: sonar-effect 1.5s infinite ease-out;
+}
+
+@keyframes sonar-effect {
+    0% {
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+    }
+    100% {
+        opacity: 0;
+        width: 180%; /* L'onde s'agrandit */
+        height: 180%;
+    }
 }
 
