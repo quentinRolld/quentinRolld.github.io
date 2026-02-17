@@ -87,13 +87,6 @@ $max-content-width: {{ site.max_width }};
 
 
 
-/* Animation de déformation douce pour la photo de profil */
-.profile img.rounded-circle {
-  /* On remplace le cercle parfait par une forme qui bouge */
-  animation: profile-morph 8s infinite alternate ease-in-out;
-  border: 3px solid var(--global-theme-color); /* Optionnel : ajoute un liseré aux couleurs du thème */
-  transition: transform 0.3s ease;
-}
 
 /* Effet au survol : on stabilise et on zoome légèrement */
 .profile img.rounded-circle:hover {
@@ -101,23 +94,3 @@ $max-content-width: {{ site.max_width }};
   animation-play-state: paused; /* La forme se fige quand on survole */
 }
 
-@keyframes profile-morph {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-  50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-  }
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-}
-
-
-
-.post-subtitle a:hover {
-  text-decoration: none;
-  color: var(--global-theme-color) !important;
-  text-shadow: 2px 2px 8px var(--global-theme-color);
-  transition: all 0.3s ease;
-}
