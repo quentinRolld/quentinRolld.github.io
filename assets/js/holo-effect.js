@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const profileContainer = document.querySelector('.profile');
+    const profileContainer = document.querySelector('.profile, .avatar');
 
     if (profileContainer) {
         profileContainer.addEventListener('mousemove', (e) => {
