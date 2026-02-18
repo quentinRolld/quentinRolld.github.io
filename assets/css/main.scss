@@ -111,21 +111,70 @@ $max-content-width: {{ site.max_width }};
     transition: all 0.3s ease;
 }
 
-/* Animation au survol */
-.avatar-container:hover::before {
-    animation: sonar-effect 1.5s infinite ease-out;
+
+/* --- Effet Holographique RGB --- */
+
+/* Le conteneur global du profil */
+.profile {
+    position: relative;
+    /* On prépare des variables CSS que le JS va modifier */
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+    perspective: 1000px; /* Pour un léger effet 3D si souhaité plus tard */
 }
 
-@keyframes sonar-effect {
-    0% {
-        opacity: 0.6;
-        width: 100%;
-        height: 100%;
-    }
-    100% {
-        opacity: 0;
-        width: 180%; /* L'onde s'agrandit */
-        height: 180%;
-    }
+/* L'image elle-même */
+.profile img.rounded-circle {
+    position: relative;
+    z-index: 2; /* L'image reste au-dessus */
+    transition: all 0.1s ease-out; /* Transition très rapide pour le suivi */
+    /* Un petit filtre pour rendre l'image plus "numérique" */
+    filter: contrast(1.1) saturate(1.1);
+}
+
+/* L'effet "Holo Blur" qui apparaît derrière */
+.profile::before,
+.profile::after {
+    content: '';
+    position: absolute;
+    /* On cible le centre de l'image. Ajuste si ton image n'est pas centrée */
+    top: 50%;
+    left: 50%;
+    width: 95%; /* Un peu plus petit que l'image pour que ça sorte juste aux bords */
+    height: 95%;
+    border-radius: 50%;
+    z-index: 1; /* Derrière l'image */
+    opacity: 0; /* Invisible par défaut */
+    filter: blur(15px); /* LE FLOU HOLOGRAPHIQUE */
+    mix-blend-mode: screen; /* Mode de fusion "lumière" pour l'effet holo */
+    transition: opacity 0.3s ease, transform 0.1s ease-out;
+    pointer-events: none; /* Pour ne pas gêner le clic */
+}
+
+/* La couche Rouge/Magenta */
+.profile::before {
+    /* Le décalage est calculé grâce aux variables JS */
+    transform: translate(calc(-50% + var(--mouse-x) * -1), calc(-50% + var(--mouse-y) * -1));
+    background: linear-gradient(45deg, rgba(255, 0, 80, 0.8), rgba(0, 200, 255, 0.2));
+    box-shadow: 0 0 30px rgba(255, 0, 80, 0.6);
+}
+
+/* La couche Cyan/Bleu */
+.profile::after {
+    /* Décalage inverse pour séparer les couleurs */
+    transform: translate(calc(-50% + var(--mouse-x)), calc(-50% + var(--mouse-y)));
+    background: linear-gradient(45deg, rgba(0, 255, 255, 0.8), rgba(50, 50, 255, 0.2));
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+}
+
+/* --- L'activation au survol --- */
+.profile:hover::before,
+.profile:hover::after {
+    opacity: 1; /* L'effet apparaît */
+}
+
+.profile:hover img.rounded-circle {
+    /* L'image principale bouge aussi très légèrement pour l'effet de profondeur */
+    transform: translate(calc(var(--mouse-x) * 0.3), calc(var(--mouse-y) * 0.3)) scale(1.02);
 }
 
