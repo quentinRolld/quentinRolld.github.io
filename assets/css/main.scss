@@ -26,17 +26,17 @@ $max-content-width: {{ site.max_width }};
 
 
 /* --- Animation Blobs Dynamiques --- */
-
+/*
 .blob-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Indispensable pour rester DERRIÈRE le contenu */
+  z-index: -1; 
   overflow: hidden;
-  background-color: var(--global-bg-color); /* Utilise la couleur de fond du template */
-  pointer-events: none; /* Pour que les blobs ne gênent pas le clic */
+  background-color: var(--global-bg-color); 
+  pointer-events: none; 
 }
 
 .blob {
@@ -45,27 +45,26 @@ $max-content-width: {{ site.max_width }};
   height: 600px;
   filter: blur(90px);
   border-radius: 50%;
-  opacity: 0.25; /* Très subtil pour ne pas gêner la lecture */
-  mix-blend-mode: multiply; /* Effet de mélange stylé */
+  opacity: 0.25;
+  mix-blend-mode: multiply; 
   animation: move-blob 25s infinite alternate ease-in-out;
 }
 
-/* Couleurs adaptées (Pastels qui marchent bien en Light et Dark mode) */
-.blob-1 {
-  background: #4facfe; /* Bleu */
+
+  background: #4facfe; 
   top: -10%;
   left: -5%;
 }
 
 .blob-2 {
-  background: #00f2fe; /* Cyan */
+  background: #00f2fe; 
   bottom: -15%;
   right: -5%;
   animation-duration: 35s;
 }
 
 .blob-3 {
-  background: #f093fb; /* Violet/Rose */
+  background: #f093fb; 
   top: 30%;
   left: 20%;
   width: 400px;
@@ -73,10 +72,10 @@ $max-content-width: {{ site.max_width }};
   animation-delay: -5s;
 }
 
-/* On réduit l'opacité en mode sombre pour que ce soit moins "flashy" */
+
 [data-theme='dark'] .blob {
   opacity: 0.15;
-  mix-blend-mode: screen; /* Meilleur rendu sur fond noir */
+  mix-blend-mode: screen;
 }
 
 @keyframes move-blob {
@@ -86,16 +85,13 @@ $max-content-width: {{ site.max_width }};
 }
 
 
-
-
-/* Le conteneur doit être en relative pour positionner les ondes */
 .avatar-container {
     position: relative;
     display: inline-block;
     z-index: 1;
 }
 
-/* Création de l'onde avec un pseudo-élément */
+
 .avatar-container::before {
     content: '';
     position: absolute;
@@ -105,89 +101,99 @@ $max-content-width: {{ site.max_width }};
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: var(--global-theme-color); /* Utilise la couleur principale du thème */
+    background-color: var(--global-theme-color); 
     opacity: 0.4;
-    z-index: -1; /* Derrière l'image */
+    z-index: -1; 
     transition: all 0.3s ease;
 }
 
+*/
 
-/* --- Effet Halo Holographique Ondulant Constant --- */
+/* --- Background TV Static --- */
 
-/* 1. Le conteneur de l'image */
-/* On s'assure que le conteneur prend juste la taille de l'image pour centrer les effets */
-.profile {
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1; /* Crée un contexte d'empilement */
-    margin-bottom: 20px; /* Un peu d'espace pour que le halo ne touche pas le texte */
+.tv-static-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-color: #111; /* Fond sombre de base */
+  overflow: hidden;
 }
 
-/* 2. L'image elle-même */
-.profile img {
-    position: relative;
-    z-index: 10; /* L'image reste au-dessus de tout */
-    border-radius: 50%; /* On s'assure que c'est rond */
-    /* Petite astuce : un fond uni derrière l'image évite que le halo ne "bave" au travers si l'image a de la transparence */
-    background: var(--global-bg-color);
-    /* Optionnel : une légère ombre interne pour détacher l'image du halo */
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+/* La neige / Le grésillement */
+.static-overlay {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  /* On génère du bruit via une image de texture très petite ou un filtre SVG */
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_Noise_at_100_percent.jpg");
+  opacity: 0.12; /* Ajuste ici pour que ce soit plus ou moins visible */
+  animation: static-noise 0.2s infinite steps(4);
+  pointer-events: none;
 }
 
-/* 3. Les couches du Halo (Pseudo-éléments) */
-.profile::before,
-.profile::after {
-    content: '';
-    position: absolute;
-    z-index: -1; /* Derrière l'image */
-    /* On centre parfaitement */
-    top: 50%;
-    left: 50%;
-    /* On définit la taille du halo par rapport à l'image (ici 115%) */
-    width: 115%;
-    height: 115%;
-    border-radius: 50%;
-    /* LE SPECTRE COMPLET DE COULEURS */
-    background: conic-gradient(
-        from 0deg,
-        #ff0000, #ff7f00, #ffff00, #00ff00, /* Rouges, Oranges, Jaunes, Verts */
-        #0000ff, #4b0082, #9400d3, #ff0000  /* Bleus, Indigos, Violets, retour au Rouge */
-    );
-    /* Le flou qui donne l'aspect "énergie" */
-    filter: blur(25px);
-    /* Le mode de fusion 'screen' rend les couleurs lumineuses */
-    mix-blend-mode: screen;
-    opacity: 0.8;
+/* Les lignes de balayage (Scanlines) */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.1) 50%
+  ), linear-gradient(
+    90deg, 
+    rgba(255, 0, 0, 0.02), 
+    rgba(0, 255, 0, 0.01), 
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 3px, 3px 100%; /* Définit la finesse des lignes */
+  pointer-events: none;
 }
 
-/* --- Les Animations d'Ondulation --- */
-
-/* Couche 1 : Tourne dans le sens horaire */
-.profile::before {
-    /* translate(-50%, -50%) est nécessaire pour garder l'élément centré pendant la rotation */
-    animation: holo-spin 6s linear infinite;
+/* Animation de déplacement aléatoire pour le grésillement */
+@keyframes static-noise {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1%, -2%); }
+  50% { transform: translate(-3%, 1%); }
+  75% { transform: translate(2%, -1%); }
+  100% { transform: translate(-1%, 2%); }
 }
 
-/* Couche 2 : Tourne en sens inverse, plus lentement, et "respire" */
-/* C'est la combinaison des deux qui crée l'ondulation complexe */
-.profile::after {
-    width: 125%; /* Un peu plus grand */
-    height: 125%;
-    opacity: 0.6; /* Un peu plus transparent */
-    filter: blur(35px); /* Flou plus large */
-    /* On combine deux animations : rotation inverse et pulsation */
-    animation: holo-spin 10s linear infinite reverse, holo-pulse 4s ease-in-out infinite alternate;
+/* Optionnel : Un léger scintillement global de l'écran */
+.tv-static-container::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: rgba(18, 16, 16, 0.03);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.1s infinite;
 }
 
-/* Définition des mouvements */
-@keyframes holo-spin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes flicker {
+  0% { opacity: 0.1; }
+  50% { opacity: 0.05; }
+  100% { opacity: 0.1; }
 }
 
-@keyframes holo-pulse {
-    0% { transform: translate(-50%, -50%) scale(1); }
-    100% { transform: translate(-50%, -50%) scale(1.1); } /* Agrandissement léger */
+
+/* Ajoute ça dans ton CSS si tu veux le texte "NO SIGNAL" */
+.tv-static-container::before {
+  content: "NO SIGNAL";
+  position: absolute;
+  top: 80px; /* Pour ne pas être sous la navbar */
+  right: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 4px;
 }
