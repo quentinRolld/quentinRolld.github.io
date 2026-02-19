@@ -109,103 +109,88 @@ $max-content-width: {{ site.max_width }};
 
 */
 
-/* =========================================
-   THEME: WHITE HACKED GLITCH
-   ========================================= */
-
-/* --- 1. FORCER LE FOND BLANC --- */
-body, html {
-    background-color: #ffffff !important;
-    /* On s'assure que le texte de base est sombre pour le contraste */
-    color: #1a1a1a;
-    overflow-x: hidden; /* Important pour l'effet de glitch qui fait bouger l'écran */
-}
-
-/* On force les conteneurs d'al-folio à être transparents ou blancs */
-.container, .post, .header, .footer, nav {
-    background-color: rgba(255, 255, 255, 0.9) !important;
-}
-
-
-/* --- 2. ABERRATION CHROMATIQUE GLOBALE (LE GLITCH) --- */
-/* Cette animation secoue légèrement tout le site et sépare les couleurs */
+/* --- CONFIGURATION FOND BLANC --- */
 body {
-    animation: global-glitch 4s infinite alternate;
+    background-color: #ffffff !important;
+    overflow-x: hidden;
+    /* L'aberration chromatique est maintenant appliquée ici */
+    animation: sudden-glitch 8s infinite; 
 }
 
-@keyframes global-glitch {
-    0%, 95% {
-        /* État normal 95% du temps */
-        text-shadow: none;
-        transform: translate(0);
-        filter: none;
-    }
-    96% {
-        /* Petit saut avec séparation Cyan/Rouge */
-        text-shadow: -2px 0 rgba(0, 255, 255, 0.5), 2px 0 rgba(255, 0, 0, 0.5);
-        transform: translate(-2px, 1px);
-        /* Légère distorsion */
-        filter: contrast(1.2) saturate(1.1);
-    }
-    97% {
-        /* Saut inverse */
-        text-shadow: 2px 0 rgba(0, 255, 255, 0.5), -2px 0 rgba(255, 0, 0, 0.5);
-        transform: translate(1px, -1px);
-    }
-    98%, 100% {
-        /* Retour à la normale */
-        text-shadow: none;
-        transform: translate(0);
-    }
-}
-
-
-/* --- 3. COUCHE DE GRESILLEMENT ROUGE --- */
-.hacked-overlay-container {
+/* --- LE FOND (DERRIÈRE) --- */
+.hacked-background {
     position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    z-index: 9999; /* Au-dessus de tout */
-    pointer-events: none; /* Permet de cliquer à travers */
-    /* Le mode 'multiply' permet aux points sombres (rouges) d'apparaître sur le blanc */
-    mix-blend-mode: multiply;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Derrière le texte */
+    background: #ffffff;
+    pointer-events: none;
 }
 
-.red-noise {
-    position: absolute;
-    top: -100%; left: -100%; width: 300%; height: 300%;
-    /* Texture de bruit */
-    background-image: url("https://www.transparenttextures.com/patterns/noise-lines.png");
-    background-size: 200px 200px;
-    /* C'est ici qu'on transforme le bruit gris en bruit ROUGE VIF */
-    filter: sepia(1) saturate(100) hue-rotate(330deg) contrast(2) brightness(0.8);
-    opacity: 0.25; /* Intensité du grésillement rouge */
-    animation: noise-twitch 0.1s steps(4) infinite, noise-shift 10s linear infinite;
-}
-
-/* Animation nerveuse du bruit */
-@keyframes noise-twitch {
-    0% { transform: translate(0,0) scale(1); }
-    100% { transform: translate(10px, -5px) scale(1.01); }
-}
-/* Déplacement lent pour éviter la répétition du motif */
-@keyframes noise-shift {
-    from { background-position: 0 0; }
-    to { background-position: 100% 100%; }
-}
-
-
-/* --- 4. SCANLINES SUBTILES (Optionnel) --- */
-.hacked-scanlines {
+/* NEIGE DE TÉLÉVISION DISCRÈTE */
+.fine-snow {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* Lignes très fines et rouges/noires */
+    /* On crée des pixels minuscules blancs et gris */
+    background-image: 
+        repeating-radial-gradient(#000 0.0001%, #ffffff 0.0002%, #555 0.0003%, #ffffff 0.0004%);
+    background-size: 250px 250px;
+    opacity: 0.04; /* Très subtil, presque imperceptible mais présent */
+    animation: snow-drift 0.2s steps(2) infinite;
+}
+
+/* LIGNES ROUGES "INTERFÉRENCES" */
+.red-glitch-lines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
     background: repeating-linear-gradient(
-        0deg,
         transparent,
-        transparent 2px,
-        rgba(255, 0, 0, 0.05) 3px,
-        rgba(0, 0, 0, 0.02) 4px
+        transparent 100px,
+        rgba(255, 0, 0, 0.03) 101px,
+        transparent 102px
     );
-    z-index: 2;
-    pointer-events: none;
+    background-size: 100% 100%;
+    animation: line-move 15s linear infinite;
+}
+
+/* --- LE GLITCH AMPLIFIÉ (MOINS FRÉQUENT) --- */
+@keyframes sudden-glitch {
+    0%, 97% { 
+        transform: translate(0);
+        filter: none;
+        text-shadow: none;
+    }
+    97.5% {
+        /* Grosse secousse avec aberration chromatique violente */
+        transform: translate(10px, -5px);
+        filter: saturate(3) hue-rotate(90deg);
+        text-shadow: 4px 0 rgba(255,0,0,0.9), -4px 0 rgba(0,255,255,0.9);
+    }
+    98% {
+        transform: translate(-15px, 5px) skewX(10deg);
+        filter: invert(1); /* Flash négatif */
+    }
+    98.5% {
+        transform: translate(5px, 10px);
+        text-shadow: -8px 0 rgba(255,0,0,0.9), 8px 0 rgba(0,255,255,0.9);
+        filter: contrast(2);
+    }
+    99%, 100% {
+        transform: translate(0);
+        filter: none;
+        text-shadow: none;
+    }
+}
+
+/* ANIMATIONS SECONDAIRES */
+@keyframes snow-drift {
+    from { background-position: 0 0; }
+    to { background-position: 10% 10%; }
+}
+
+@keyframes line-move {
+    from { background-position: 0 0; }
+    to { background-position: 0 100vh; }
 }
