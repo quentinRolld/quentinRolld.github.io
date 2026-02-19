@@ -208,6 +208,23 @@ body {
     background-color: #ffffff !important;
 }
 
+.profile img {
+    position: relative;
+    z-index: 5;
+    /* Effet d'aberration chromatique sur les bords de l'image */
+    filter: drop-shadow(4px 0px 0px rgba(255,0,80,0.4)) 
+            drop-shadow(-4px 0px 0px rgba(0,255,255,0.4));
+    transition: all 0.2s;
+}
+
+.profile:hover img {
+    /* Au survol, les couleurs s'écartent encore plus */
+    filter: drop-shadow(8px 0px 0px rgba(255,0,80,0.7)) 
+            drop-shadow(-8px 0px 0px rgba(0,255,255,0.7))
+            contrast(1.2);
+    transform: scale(1.02);
+}
+
 /* ANIMATIONS SECONDAIRES */
 @keyframes snow-drift {
     from { background-position: 0 0; }
