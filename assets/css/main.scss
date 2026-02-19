@@ -110,14 +110,13 @@ $max-content-width: {{ site.max_width }};
 
 
 /* --- CONFIGURATION FOND BLANC --- */
-
+/*
 body {
     background-color: #ffffff !important;
     overflow-x: hidden;
-    /* L'aberration chromatique est maintenant appliquée ici */
     animation: sudden-glitch 8s infinite; 
 }
-
+*/
 /* --- LE FOND (DERRIÈRE) --- */
 /*
 .hacked-background {
@@ -210,7 +209,7 @@ body {
 /* On l'applique au body */
 body {
     animation: sudden-glitch 12s infinite; /* Glitch violent toutes les 12 secondes */
-    background-color: #ffffff !important;
+    /* background-color: #ffffff !important; */
 }
 
 .profile img {
