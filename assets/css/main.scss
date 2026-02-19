@@ -109,70 +109,90 @@ $max-content-width: {{ site.max_width }};
 
 */
 
-/* --- Background TV Static Ultra-Robuste --- */
+/* --- Background TV Static : Version Haute Visibilité --- */
 
-/* On s'assure que rien ne bloque la vue derrière */
-body, .container, .post, .footer, .header {
-  background-color: transparent !important;
+/* On force le fond du site à être gris foncé plutôt que noir total */
+body, .tv-static-container {
+  background-color: #1a1b1e !important; /* Gris sidéral foncé */
+}
+
+/* On s'assure que les conteneurs d'al-folio ne bloquent pas la vue */
+#main-container, .post, .container, .header, .footer {
+  background: transparent !important;
 }
 
 .tv-static-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  background: #050505; /* Un noir profond */
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
   overflow: hidden;
 }
 
-/* La neige : on utilise un filtre CSS de turbulence */
+/* La neige : Texture de bruit brute */
 .static-overlay {
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  opacity: 0.18; /* Augmenté pour être bien visible */
+  /* Texture de bruit générique intégrée en base64 pour être certain que ça s'affiche */
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png"), 
+                    url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  opacity: 0.3; /* On monte l'opacité pour que ce soit BIEN visible */
+  animation: static-anim 0.15s steps(2) infinite;
+  filter: brightness(1.5) contrast(1.2); /* On booste le signal */
   pointer-events: none;
-  
-  /* On crée le bruit ici */
-  background: contrast(150%) brightness(100%);
-  filter: url(#noiseFilter); /* On va injecter ce filtre juste après */
 }
 
-/* On ajoute les scanlines par-dessus pour le look "vieux tube cathodique" */
+/* Les lignes de balayage (Scanlines) */
 .scanlines {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.3) 50%
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 3px
   );
-  background-size: 100% 4px;
-  z-index: 2;
   pointer-events: none;
 }
 
-/* L'animation qui fait sauter l'image */
-@keyframes static-noise-anim {
-  0% { transform: translate(0, 0); }
-  10% { transform: translate(-1%, -1%); }
-  20% { transform: translate(-2%, 1%); }
-  30% { transform: translate(1%, -2%); }
-  40% { transform: translate(-1%, 2%); }
-  50% { transform: translate(-2%, -2%); }
-  60% { transform: translate(2%, 1%); }
-  70% { transform: translate(1%, 2%); }
-  80% { transform: translate(-1%, -1%); }
-  90% { transform: translate(1%, -2%); }
-  100% { transform: translate(0, 0); }
+@keyframes static-anim {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(1%, 1%); }
 }
 
-.static-overlay {
-  animation: static-noise-anim 0.2s infinite;
+/* --- Le Halo Holographique (Spectre Constant) --- */
+.profile {
+  position: relative;
+  display: inline-block;
+  padding: 10px; /* Espace pour le halo */
+}
+
+.profile img {
+  position: relative;
+  z-index: 5;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.profile::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  /* Spectre complet */
+  background: conic-gradient(from 0deg, red, yellow, lime, aqua, blue, magenta, red);
+  filter: blur(15px);
+  z-index: 1;
+  animation: rotate-spectrum 3s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes rotate-spectrum {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
