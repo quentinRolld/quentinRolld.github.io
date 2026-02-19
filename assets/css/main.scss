@@ -110,33 +110,44 @@ $max-content-width: {{ site.max_width }};
 */
 
 /* --- Background TV Static --- */
+/* --- Background TV Static (Corrected) --- */
 
+/* 1. On force les fonds du thème à être semi-transparents pour voir le grésillement */
+body {
+  background-color: transparent !important;
+}
+
+.container, .post, .footer {
+  background-color: transparent !important;
+}
+
+/* 2. Le conteneur principal de l'effet */
 .tv-static-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
-  background-color: #111; /* Fond sombre de base */
+  z-index: -2; /* Très profond */
+  background-color: #0a0a0a; /* Fond très noir */
   overflow: hidden;
 }
 
-/* La neige / Le grésillement */
+/* 3. Génération du bruit (GRESILLEMENT) via SVG pour une fiabilité 100% */
 .static-overlay {
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  /* On génère du bruit via une image de texture très petite ou un filtre SVG */
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_Noise_at_100_percent.jpg");
-  opacity: 0.12; /* Ajuste ici pour que ce soit plus ou moins visible */
+  /* Filtre de bruit analogique */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.15; 
   animation: static-noise 0.2s infinite steps(4);
   pointer-events: none;
 }
 
-/* Les lignes de balayage (Scanlines) */
+/* 4. Les lignes horizontales (Scanlines) */
 .scanlines {
   position: absolute;
   top: 0;
@@ -145,55 +156,54 @@ $max-content-width: {{ site.max_width }};
   height: 100%;
   background: linear-gradient(
     rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.1) 50%
-  ), linear-gradient(
-    90deg, 
-    rgba(255, 0, 0, 0.02), 
-    rgba(0, 255, 0, 0.01), 
-    rgba(0, 0, 255, 0.02)
+    rgba(0, 0, 0, 0.2) 50%
   );
-  background-size: 100% 3px, 3px 100%; /* Définit la finesse des lignes */
+  background-size: 100% 4px; /* Épaisseur des lignes */
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* 5. Effet de scintillement (Flicker) */
+.tv-static-container::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  opacity: 0;
+  animation: flicker 0.15s infinite;
   pointer-events: none;
 }
 
-/* Animation de déplacement aléatoire pour le grésillement */
+/* Animations */
 @keyframes static-noise {
   0% { transform: translate(0, 0); }
-  25% { transform: translate(-1%, -2%); }
-  50% { transform: translate(-3%, 1%); }
-  75% { transform: translate(2%, -1%); }
-  100% { transform: translate(-1%, 2%); }
-}
-
-/* Optionnel : Un léger scintillement global de l'écran */
-.tv-static-container::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: rgba(18, 16, 16, 0.03);
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-  animation: flicker 0.1s infinite;
+  25% { transform: translate(-2%, -1%); }
+  50% { transform: translate(-1%, 2%); }
+  75% { transform: translate(1%, -2%); }
+  100% { transform: translate(-1%, 1%); }
 }
 
 @keyframes flicker {
-  0% { opacity: 0.1; }
-  50% { opacity: 0.05; }
-  100% { opacity: 0.1; }
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-
-/* Ajoute ça dans ton CSS si tu veux le texte "NO SIGNAL" */
+/* Texte NO SIGNAL */
 .tv-static-container::before {
   content: "NO SIGNAL";
   position: absolute;
-  top: 80px; /* Pour ne pas être sous la navbar */
-  right: 40px;
-  font-family: 'Courier New', Courier, monospace;
+  top: 100px;
+  right: 50px;
+  font-family: 'monospace';
   color: rgba(255, 255, 255, 0.2);
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 4px;
+  font-size: 1rem;
+  letter-spacing: 5px;
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
