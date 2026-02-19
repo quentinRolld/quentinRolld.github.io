@@ -160,48 +160,46 @@ body {
 }
 */
 
-/* --- LE GLITCH CHROMATIQUE AMPLIFIÉ (CORRIGÉ) --- */
+/* --- LE GLITCH CHROMATIQUE AMPLIFIÉ (SANS COUPURE BLANCHE) --- */
 @keyframes sudden-glitch {
     0%, 80%, 100% { 
-        transform: translate(0);
+        transform: translate(0) scale(1) skewX(0);
         filter: none;
         text-shadow: none;
-        clip-path: inset(0 0 0 0);
     }
     
     /* Étape 1 : Décalage Magenta/Vert */
     81% {
-        transform: translate(-10px, 5px);
+        /* Le scale(1.02) empêche de voir les bords de l'écran pendant le mouvement */
+        transform: translate(-10px, 5px) scale(1.02) skewX(2deg);
         text-shadow: 6px 0 #ff00ff, -6px 0 #00ff00;
         filter: saturate(2);
-        clip-path: inset(10% 0 40% 0); /* Coupe une tranche */
     }
 
-    /* Étape 2 : Flash Coloré Néon - On évite l'inversion totale */
+    /* Étape 2 : Flash Coloré Néon */
     82% {
-        transform: translate(15px, -10px);
-        filter: hue-rotate(150deg) contrast(1.5); /* Change les couleurs sans blanchir */
+        transform: translate(15px, -10px) scale(1.02) skewX(-5deg);
+        filter: hue-rotate(150deg) contrast(1.5);
         text-shadow: -10px 0 #00ffff, 10px 0 #ff00ff;
     }
 
-    /* Étape 3 : Secousse violente - REMPLACÉ INVERT PAR CONTRASTE */
+    /* Étape 3 : Secousse violente avec forte distorsion */
     83% {
-        transform: skewX(15deg) scaleY(1.05);
-        filter: brightness(1.2) contrast(4); /* Flash de lumière intense au lieu du blanc */
-        clip-path: inset(50% 0 10% 0);
+        transform: translate(-5px, 5px) scale(1.05) skewX(15deg);
+        filter: brightness(1.2) contrast(4); 
     }
 
     /* Étape 4 : Écrasement et vibration */
     84% {
-        transform: translate(-20px, 0);
+        transform: translate(-20px, 0) scale(1.02) skewX(-2deg);
         text-shadow: 12px 0 #00ff00, -12px 0 #ff00ff;
         filter: saturate(8);
     }
 
     /* Étape 5 : Stabilisation */
     85% {
-        transform: translate(2px, 2px);
-        filter: blur(1px);
+        transform: translate(2px, 2px) scale(1) skewX(0);
+        filter: blur(2px);
     }
 }
 
