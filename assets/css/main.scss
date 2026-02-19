@@ -252,3 +252,48 @@ body {
     98.5% { transform: translate(2px, -2px); }
     99% { transform: translate(-2px, 2px); }
 }
+
+
+
+/* --- LIGNE DE BALAYAGE (SCANLINE) SYNCHRONISÉE AVEC LE GLITCH --- */
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh; /* Épaisseur du faisceau lumineux */
+    /* Un dégradé transparent -> Cyan -> Rose -> transparent */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 255, 0) 0%,
+        rgba(0, 255, 255, 0.3) 40%,
+        rgba(255, 0, 255, 0.3) 60%,
+        rgba(255, 0, 255, 0) 100%
+    );
+    z-index: 9999; /* Par-dessus tout le reste */
+    pointer-events: none; /* Pour ne pas bloquer les clics de souris */
+    opacity: 0; /* Invisible par défaut */
+    /* Même durée d'animation (10s) pour être parfaitement synchro avec sudden-glitch */
+    animation: glitch-scanline 10s infinite; 
+}
+
+@keyframes glitch-scanline {
+    0%, 79% { 
+        opacity: 0; 
+        transform: translateY(-20vh); /* En attente au-dessus de l'écran */
+    }
+    80% { 
+        opacity: 1; /* Apparaît au début du glitch */
+        transform: translateY(0vh); 
+    }
+    85% { 
+        opacity: 1; 
+        transform: translateY(100vh); /* Traverse tout l'écran vers le bas */
+    }
+    86%, 100% { 
+        opacity: 0; /* Disparaît dès que le glitch est fini */
+        transform: translateY(120vh); 
+    }
+}
