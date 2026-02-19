@@ -162,7 +162,7 @@ body {
 
 /* --- LE GLITCH CHROMATIQUE AMPLIFIÉ --- */
 @keyframes sudden-glitch {
-    0%, 94%, 100% { 
+    0%, 80%, 100% { 
         transform: translate(0);
         filter: none;
         text-shadow: none;
@@ -170,7 +170,7 @@ body {
     }
     
     /* Étape 1 : Décalage et séparation Cyan/Rouge */
-    94.5% {
+    81% {
         transform: translate(-15px, 5px);
         text-shadow: 6px 0 #ff003c, -6px 0 #00e6f6;
         filter: saturate(5) contrast(1.5);
@@ -178,7 +178,7 @@ body {
     }
 
     /* Étape 2 : Flash Coloré Néon */
-    95% {
+    82% {
         transform: translate(20px, -10px);
         filter: hue-rotate(90deg) brightness(1.2); /* Passage au Vert/Rose */
         text-shadow: -10px 0 #ff00f0, 10px 0 #00ff00;
@@ -186,21 +186,21 @@ body {
     }
 
     /* Étape 3 : Distorsion Horizontale extrême */
-    95.5% {
+    83% {
         transform: skewX(25deg) scaleY(1.1);
         filter: invert(1) contrast(3); /* Flash négatif violent */
         clip-path: inset(80% 0 5% 0);
     }
 
     /* Étape 4 : Écrasement et "Bruit" de couleur */
-    96% {
+    84% {
         transform: translate(-30px, 0);
         text-shadow: 15px 0 #0000ff, -15px 0 #ff0000;
         filter: saturate(10);
     }
 
     /* Étape 5 : Retour progressif avec une dernière secousse */
-    96.5% {
+    85% {
         transform: translate(5px, 5px);
         filter: blur(2px); /* Flou de mouvement de fin */
     }
@@ -208,36 +208,44 @@ body {
 
 /* On l'applique au body */
 body {
-    animation: sudden-glitch 12s infinite; /* Glitch violent toutes les 12 secondes */
+    animation: sudden-glitch 10s infinite; /* Glitch violent toutes les 12 secondes */
     /* background-color: #ffffff !important; */
 }
 
-.profile img {
+/* --- PORTRAIT NÉON TRICOLORE --- */
+.profile {
+    position: relative;
+    display: inline-block;
+}
+
+.profile img.rounded-circle {
     position: relative;
     z-index: 5;
-    /* Effet d'aberration chromatique sur les bords de l'image */
-    filter: drop-shadow(4px 0px 0px rgba(255,0,80,0.4)) 
-            drop-shadow(-4px 0px 0px rgba(0,255,255,0.4));
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Triple aberration chromatique constante : Vert, Rose, Cyan */
+    filter: 
+        drop-shadow(5px 2px 0px rgba(0, 255, 0, 0.5))    /* Vert */
+        drop-shadow(-5px -2px 0px rgba(255, 0, 255, 0.5)) /* Rose/Magenta */
+        drop-shadow(0px 0px 8px rgba(0, 255, 255, 0.3));  /* Cyan Glow */
 }
 
-.profile:hover img {
-    /* Au survol, les couleurs s'écartent encore plus */
-    filter: drop-shadow(8px 0px 0px rgba(255,0,80,0.7)) 
-            drop-shadow(-8px 0px 0px rgba(0,255,255,0.7))
-            contrast(1.2);
-    transform: scale(1.02);
+/* Effet d'excitation au survol */
+.profile:hover img.rounded-circle {
+    transform: scale(1.05) rotate(-1deg);
+    filter: 
+        drop-shadow(8px 4px 0px rgba(0, 255, 0, 0.8)) 
+        drop-shadow(-8px -4px 0px rgba(255, 0, 255, 0.8))
+        drop-shadow(0px 0px 15px rgba(0, 255, 255, 0.6))
+        contrast(1.2);
 }
 
-/* ANIMATIONS SECONDAIRES */
-/*
-@keyframes snow-drift {
-    from { background-position: 0 0; }
-    to { background-position: 10% 10%; }
+/* Optionnel : ajoute une petite animation de "vibration" uniquement sur la photo */
+.profile img.rounded-circle {
+    animation: profile-vibrate 5s infinite;
 }
 
-@keyframes line-move {
-    from { background-position: 0 0; }
-    to { background-position: 0 100vh; }
+@keyframes profile-vibrate {
+    0%, 98%, 100% { transform: translate(0); }
+    98.5% { transform: translate(2px, -2px); }
+    99% { transform: translate(-2px, 2px); }
 }
-*/
