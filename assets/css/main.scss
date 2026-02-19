@@ -109,90 +109,103 @@ $max-content-width: {{ site.max_width }};
 
 */
 
-/* --- Background TV Static : Version Haute Visibilité --- */
+/* =========================================
+   THEME: WHITE HACKED GLITCH
+   ========================================= */
 
-/* On force le fond du site à être gris foncé plutôt que noir total */
-body, .tv-static-container {
-  background-color: #1a1b1e !important; /* Gris sidéral foncé */
+/* --- 1. FORCER LE FOND BLANC --- */
+body, html {
+    background-color: #ffffff !important;
+    /* On s'assure que le texte de base est sombre pour le contraste */
+    color: #1a1a1a;
+    overflow-x: hidden; /* Important pour l'effet de glitch qui fait bouger l'écran */
 }
 
-/* On s'assure que les conteneurs d'al-folio ne bloquent pas la vue */
-#main-container, .post, .container, .header, .footer {
-  background: transparent !important;
+/* On force les conteneurs d'al-folio à être transparents ou blancs */
+.container, .post, .header, .footer, nav {
+    background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
-.tv-static-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
+
+/* --- 2. ABERRATION CHROMATIQUE GLOBALE (LE GLITCH) --- */
+/* Cette animation secoue légèrement tout le site et sépare les couleurs */
+body {
+    animation: global-glitch 4s infinite alternate;
 }
 
-/* La neige : Texture de bruit brute */
-.static-overlay {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  /* Texture de bruit générique intégrée en base64 pour être certain que ça s'affiche */
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png"), 
-                    url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-  opacity: 0.3; /* On monte l'opacité pour que ce soit BIEN visible */
-  animation: static-anim 0.15s steps(2) infinite;
-  filter: brightness(1.5) contrast(1.2); /* On booste le signal */
-  pointer-events: none;
+@keyframes global-glitch {
+    0%, 95% {
+        /* État normal 95% du temps */
+        text-shadow: none;
+        transform: translate(0);
+        filter: none;
+    }
+    96% {
+        /* Petit saut avec séparation Cyan/Rouge */
+        text-shadow: -2px 0 rgba(0, 255, 255, 0.5), 2px 0 rgba(255, 0, 0, 0.5);
+        transform: translate(-2px, 1px);
+        /* Légère distorsion */
+        filter: contrast(1.2) saturate(1.1);
+    }
+    97% {
+        /* Saut inverse */
+        text-shadow: 2px 0 rgba(0, 255, 255, 0.5), -2px 0 rgba(255, 0, 0, 0.5);
+        transform: translate(1px, -1px);
+    }
+    98%, 100% {
+        /* Retour à la normale */
+        text-shadow: none;
+        transform: translate(0);
+    }
 }
 
-/* Les lignes de balayage (Scanlines) */
-.scanlines {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.1) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  pointer-events: none;
+
+/* --- 3. COUCHE DE GRESILLEMENT ROUGE --- */
+.hacked-overlay-container {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 9999; /* Au-dessus de tout */
+    pointer-events: none; /* Permet de cliquer à travers */
+    /* Le mode 'multiply' permet aux points sombres (rouges) d'apparaître sur le blanc */
+    mix-blend-mode: multiply;
 }
 
-@keyframes static-anim {
-  0% { transform: translate(0,0); }
-  100% { transform: translate(1%, 1%); }
+.red-noise {
+    position: absolute;
+    top: -100%; left: -100%; width: 300%; height: 300%;
+    /* Texture de bruit */
+    background-image: url("https://www.transparenttextures.com/patterns/noise-lines.png");
+    background-size: 200px 200px;
+    /* C'est ici qu'on transforme le bruit gris en bruit ROUGE VIF */
+    filter: sepia(1) saturate(100) hue-rotate(330deg) contrast(2) brightness(0.8);
+    opacity: 0.25; /* Intensité du grésillement rouge */
+    animation: noise-twitch 0.1s steps(4) infinite, noise-shift 10s linear infinite;
 }
 
-/* --- Le Halo Holographique (Spectre Constant) --- */
-.profile {
-  position: relative;
-  display: inline-block;
-  padding: 10px; /* Espace pour le halo */
+/* Animation nerveuse du bruit */
+@keyframes noise-twitch {
+    0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(10px, -5px) scale(1.01); }
+}
+/* Déplacement lent pour éviter la répétition du motif */
+@keyframes noise-shift {
+    from { background-position: 0 0; }
+    to { background-position: 100% 100%; }
 }
 
-.profile img {
-  position: relative;
-  z-index: 5;
-  border: 1px solid rgba(255,255,255,0.2);
-}
 
-.profile::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 50%;
-  /* Spectre complet */
-  background: conic-gradient(from 0deg, red, yellow, lime, aqua, blue, magenta, red);
-  filter: blur(15px);
-  z-index: 1;
-  animation: rotate-spectrum 3s linear infinite;
-  opacity: 0.7;
-}
-
-@keyframes rotate-spectrum {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* --- 4. SCANLINES SUBTILES (Optionnel) --- */
+.hacked-scanlines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Lignes très fines et rouges/noires */
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 0, 0, 0.05) 3px,
+        rgba(0, 0, 0, 0.02) 4px
+    );
+    z-index: 2;
+    pointer-events: none;
 }
