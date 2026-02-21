@@ -239,8 +239,8 @@ ninja.data = [{
           description: "automous flying robot",
           section: "Projects",handler: () => {
               window.location.href = "/projects/Cansat/";
-            },},{id: "projects-cansat",
-          title: 'Cansat',
+            },},{id: "projects-lerobot-hackathon",
+          title: 'Lerobot Hackathon',
           description: "Mistral AI - Huggingface - Robotics Hackathon",
           section: "Projects",handler: () => {
               window.location.href = "/projects/Mistral_hackathon/";
