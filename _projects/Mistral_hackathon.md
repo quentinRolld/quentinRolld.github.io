@@ -35,25 +35,23 @@ Our goal is to create a system able to play "Guess who" against a human. In our 
 Each round, the game asks a question, for example: Does your character wear glasses? Then, using the robotic arm, it eliminates people based on the answer—to ultimately guess which card is the right one. The vision part of the analysis (which question to ask, which people to eliminate) is performed by a Mistral VLM, and the LLM agent orchestration is also handled by a Mistral LLM. The robotic arm policy obtains the position of the person to be eliminated and executes it as shown in the video.
 
 
-<div class="ratio ratio-16x9">
-  <iframe 
-    src="https://youtu.be/TlyRnDddY2U" 
-    title="Example of the complete system in action" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-  </iframe>
+<div class="row justify-content-center">
+    <div class="col-lg-10 mt-3">
+        <div class="ratio ratio-16x9">
+            <iframe 
+                src="https://www.youtube.com/embed/TlyRnDddY2U" 
+                title="Yaw Control" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="caption text-center">
+            Vidéo de démonstration : Contrôle du Yaw (lacet) du système Mini-Apterros.
+        </div>
+    </div>
 </div>
 
-<div class="ratio ratio-16x9">
-  <iframe 
-    src="https://www.youtube.com/embed/TlyRnDddY2U" 
-    title="Example of the complete system in action"  
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-  </iframe>
-</div>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
