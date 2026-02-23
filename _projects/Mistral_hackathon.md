@@ -45,6 +45,15 @@ Each round, the game asks a question, for example: Does your character wear glas
   </iframe>
 </div>
 
+<div class="ratio ratio-16x9">
+  <iframe 
+    src="https://www.youtube.com/embed/TlyRnDddY2U" 
+    title="Example of the complete system in action"  
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
