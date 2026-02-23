@@ -58,7 +58,4 @@ Each round, the game asks a question, for example: Does your character wear glas
         {% include figure.liquid loading="eager" path="assets/img/lerobot_hack_team.png" title="Our team" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
 
