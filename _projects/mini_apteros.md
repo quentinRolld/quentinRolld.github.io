@@ -35,9 +35,14 @@ This project was proposed to us as part of our second year at ENSEA, the Nation
     </div>
 </div>
 
+The two main sensors used are : 
+• The IMU (Inertial Measure Unit) measures the linear (accelerometer) and angular (gyroscope) acceleration of the system as well as the angle of rotation given by the magnetometer.
+• The Lidar which gives the system's position relatively to the ground : vertical position. 
+the system speed is obtained by averaging the data of the accelerometer (by integrating the acceleration) and of the Lidar (by deriving the position).
+
 <div class="row mt-5"> 
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/perseus_roll.png" title="Perseus Roll Control" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/perseus_roll.png" title="Roll Control" class="img-fluid rounded z-depth-1" %}
         <div class="caption text-justify">
             <strong>ω</strong> : rotation speed measured by the gyroscope<br>
             <strong>θ</strong> : angle of rotation measured by the magnetometer<br>
@@ -45,7 +50,7 @@ This project was proposed to us as part of our second year at ENSEA, the Nation
         </div>
     </div>
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/perseus_altitude.png" title="Perseus Altitude Control" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/perseus_altitude.png" title="Altitude Control" class="img-fluid rounded z-depth-1" %}
         <div class="caption text-justify">
             <strong>z</strong> : altitude measured by the Lidar<br>
             <strong>𝛾</strong> : acceleration measured by IMU<br>
@@ -53,7 +58,17 @@ This project was proposed to us as part of our second year at ENSEA, the Nation
             <strong>1.5</strong> : Turbine force (kg) divided by rocket mass
         </div>
     </div>
+</div>
 
+
+<div class="ratio ratio-16x9">
+  <iframe 
+    src="https://www.youtube.com/watch?v=CrK4TwWNbsY" 
+    title="Yaw Control" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
 </div>
 
 
@@ -63,6 +78,6 @@ This project was proposed to us as part of our second year at ENSEA, the Nation
     </div>
 </div>
 <div class="caption">
-    This image can also have a caption. It's like magic.
+    La bête, qu'elle est belle
 </div>
 
