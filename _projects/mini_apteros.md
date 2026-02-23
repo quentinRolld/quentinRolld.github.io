@@ -10,7 +10,7 @@ giscus_comments: true
 
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0" style="background-color: #e3f2fd; padding: 20px; border-radius: 5px;">
+    <div class="col-sm mt-3 mt-md-0" style="background-color: #b2ddfa; padding: 20px; border-radius: 5px;">
         {% include figure.liquid loading="eager" path="assets/img/perseus_cnes.png" title="" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
