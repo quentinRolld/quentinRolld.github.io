@@ -207,7 +207,7 @@ body {
 
 /* On l'applique au body */
 body {
-    animation: sudden-glitch 20s infinite; /* Glitch violent toutes les 12 secondes */
+    animation: sudden-glitch 30s infinite; /* Glitch violent toutes les 12 secondes */
     /* background-color: #ffffff !important; */
 }
 
@@ -274,7 +274,7 @@ body::after {
     pointer-events: none; /* Pour ne pas bloquer les clics de souris */
     opacity: 0; /* Invisible par défaut */
     /* Même durée d'animation (10s) pour être parfaitement synchro avec sudden-glitch */
-    animation: glitch-scanline 20s infinite; 
+    animation: glitch-scanline 30s infinite; 
 }
 
 @keyframes glitch-scanline {
