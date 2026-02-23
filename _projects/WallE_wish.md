@@ -7,6 +7,8 @@ importance: 3
 category: fun
 ---
 
+On process
+<!--
 The goal of this project is to combine the most advanced open-source tools available today—from speech processing and computer vision to language understanding and imitation learning—to create a mini autonomous prototype, a small “thinking being” in its own right. In this first stage, the focus is on building the mechanical and electronic structure while developing a basic algorithm that can receive a user request and generate both a verbal response and a physical action.
 
 <div class="row">
@@ -25,3 +27,4 @@ The robot continuously captures audio via the webcam microphone. Image capture a
 Detected speech is converted into text and, together with the captured image, is processed by a Vision-Language Model. The model generates a textual response, which is then played through the robot’s microphone.
 
 When a user request requires an action, an additional instruction is provided to the VLM, prompting it to generate a detailed task for the robot. This instruction, along with the current image, is sent to a Vision-Language-Action model (e.g., gr00t), which outputs actionable commands.
+-->

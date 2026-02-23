@@ -15,7 +15,7 @@
       institution: CEA - INRIA - University of Lorraine, Nancy, France
       year: 2024 - 2027
       description:
-        - ROBOTICS AND COMPUTER VISION
+        - Robotics and computer vision
         - One class anomaly detection in the context of autonomous robotics
         
     - title: MSC - ROBOTICS AND DEEP LEARNING
@@ -48,6 +48,19 @@
       year: 2023 - 4 months
       description: Development of a real-time, electonic embedded system for a fuel cell.
 
+- title: Publications and Patents
+  type: time_table
+  contents:
+    - title: Publications
+      items:
+      - Failure Identification in Imitation Learning via Statistical and Semantic Filtering, Quentin Rolland, Fabrice Mayran de Chamisso, and Jean-Baptiste Mouret, ICRA 2026
+
+
+    - title: Patent
+      items: 
+      - In process - 2026 - Multi object manipulation 
+      - In process - 2025 - Inverse reinforcement learning
+
 
 - title: Honors and Awards
   type: time_table
@@ -57,11 +70,6 @@
         - Industrial and Trustworthy AI Challenge - Welding Quality Detection
         - 3rd place
         - <a href="https://confianceai.github.io/Welding-Quality-Detection-Challenge/">website</a>
-    - year: 2025
-      items:
-      - Lerobot hackathon - Mistral AI & HuggingFace - Paris
-      - 3rd place 
-      - <a href="https://luma.com/roboticshack">website</a>
     - year: 2024
       items:
         - COVAPSY - Autonomous car competition - ENS Saclay
