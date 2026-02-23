@@ -72,21 +72,14 @@ the system speed is obtained by averaging the data of the accelerometer (by int
 
 
 
-<div class="row justify-content-center">
-    <div class="col-lg-10 mt-3">
-        <div class="ratio ratio-16x9">
-            <iframe 
-                src="https://www.youtube.com/embed/CrK4TwWNbsY" 
-                title="Yaw Control" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <div class="caption text-center">
-            Vidéo de démonstration : Contrôle du Yaw (lacet) du système Mini-Apterros.
-        </div>
-    </div>
+<div class="ratio ratio-16x9" style="max-width: 900px; margin: 0 auto;">
+  <iframe 
+    src="https://www.youtube.com/embed/CrK4TwWNbsY" 
+    title="Yaw Control" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
 </div>
 
 
