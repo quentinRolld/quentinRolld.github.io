@@ -23,6 +23,10 @@ https://www.perseusproject.com
 
 This project was proposed to us as part of our second year at ENSEA, the National School of Electronics and its Applications. The Mini-apterros project is part of the development programme for a new generation of bi-liquid and reusable space launchers. These new technologies require rethinking the on-board navigation system in its entirety: data acquisition, signal processing, correction and decision making, control of propulsion systems, ground communication. The main objective is therefore the design and implementation of a GNC (Guidance Navigation and Control) on an electric aircraft allowing stabilized flights and translations parallel to the ground at constant altitude. One of the major challenges is to design stable and robust servo-controls to control the altitude of the craft, as well as its attitude stabilization. This design is accompanied by the production of a prototype. Eventually, the technologies will be taken over by CNES teams for development on powder rockets, then bi-liquids.
 
+<a href="https://www.youtube.com/watch?v=XWOvAuZyrhk" target="_blank" class="custom-hacker-btn">
+  EXTERNAL_SOURCE_LINK
+</a>
+
 
 <div class="row">
     <div class="col-sm-7 mt-3 mt-md-0">
@@ -70,6 +74,17 @@ the system speed is obtained by averaging the data of the accelerometer (by int
     allowfullscreen>
   </iframe>
 </div>
+
+<div class="ratio ratio-16x9">
+  <iframe 
+    src="https://www.youtube.com/embed/CrK4TwWNbsY" 
+    title="Yaw Control" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
+
 
 
 <div class="row">
