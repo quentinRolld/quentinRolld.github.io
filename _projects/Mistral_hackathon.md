@@ -39,7 +39,7 @@ Each round, the game asks a question, for example: Does your character wear glas
     <div class="col-lg-10 mt-3">
         <div class="ratio ratio-16x9">
             <iframe 
-                src="https://www.youtube.com/embed/TlyRnDddY2U" 
+                src="https://www.youtube-nocookie.com/embed/TlyRnDddY2U" 
                 title="Yaw Control" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -54,7 +54,7 @@ Each round, the game asks a question, for example: Does your character wear glas
 
 <div class="ratio ratio-16x9" style="max-width: 900px; margin: 0 auto;">
   <iframe 
-    src="https://www.youtube.com/embed/CrK4TwWNbsY" 
+    src="https://www.youtube-nocookie.com/embed/CrK4TwWNbsY" 
     title="Yaw Control" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

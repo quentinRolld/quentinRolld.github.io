@@ -75,12 +75,30 @@ the system speed is obtained by averaging the data of the accelerometer (by int
 
 <div class="ratio ratio-16x9" style="max-width: 900px; margin: 0 auto;">
   <iframe 
-    src="https://www.youtube.com/embed/CrK4TwWNbsY" 
+    src="https://www.youtube-nocookie.com/embed/CrK4TwWNbsY" 
     title="Yaw Control" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
     allowfullscreen>
   </iframe>
+</div>
+
+<div style="width: 100%; display: flex; justify-content: center; margin: 2rem 0;">
+    <div style="width: 100%; max-width: 1000px;">
+        <div class="ratio ratio-16x9">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/CrK4TwWNbsY?rel=0" 
+                title="Yaw Control" 
+                style="border: none; width: 100%; height: 100%;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="caption text-center mt-2">
+            <strong>Demonstration:</strong> Mini-Apterros Yaw Control System.
+        </div>
+    </div>
 </div>
 
 
