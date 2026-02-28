@@ -52,6 +52,15 @@ Each round, the game asks a question, for example: Does your character wear glas
     </div>
 </div>
 
+<div class="ratio ratio-16x9" style="max-width: 900px; margin: 0 auto;">
+  <iframe 
+    src="https://www.youtube.com/embed/CrK4TwWNbsY" 
+    title="Yaw Control" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
