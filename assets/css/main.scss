@@ -161,43 +161,40 @@ body {
 */
 
 /* --- LE GLITCH CHROMATIQUE AMPLIFIÉ (SANS COUPURE BLANCHE) --- */
+/* --- LE GLITCH CHROMATIQUE (CYCLE DE 30s) --- */
 @keyframes sudden-glitch {
-    0%, 80%, 100% { 
+    /* Calme plat de 0% à 94% (soit environ 28 secondes de tranquillité) */
+    0%, 94%, 100% { 
         transform: translate(0) scale(1) skewX(0);
         filter: none;
         text-shadow: none;
     }
     
-    /* Étape 1 : Décalage Magenta/Vert */
-    81% {
-        /* Le scale(1.02) empêche de voir les bords de l'écran pendant le mouvement */
+    /* Le glitch se déclenche sur les 2 dernières secondes (95% à 99%) */
+    95% {
         transform: translate(-10px, 5px) scale(1.02) skewX(2deg);
         text-shadow: 6px 0 #ff00ff, -6px 0 #00ff00;
         filter: saturate(2);
     }
 
-    /* Étape 2 : Flash Coloré Néon */
-    82% {
+    96% {
         transform: translate(15px, -10px) scale(1.02) skewX(-5deg);
         filter: hue-rotate(150deg) contrast(1.5);
         text-shadow: -10px 0 #00ffff, 10px 0 #ff00ff;
     }
 
-    /* Étape 3 : Secousse violente avec forte distorsion */
-    83% {
+    97% {
         transform: translate(-5px, 5px) scale(1.05) skewX(15deg);
         filter: brightness(1.2) contrast(4); 
     }
 
-    /* Étape 4 : Écrasement et vibration */
-    84% {
+    98% {
         transform: translate(-20px, 0) scale(1.02) skewX(-2deg);
         text-shadow: 12px 0 #00ff00, -12px 0 #ff00ff;
         filter: saturate(8);
     }
 
-    /* Étape 5 : Stabilisation */
-    85% {
+    99% {
         transform: translate(2px, 2px) scale(1) skewX(0);
         filter: blur(2px);
     }
@@ -207,7 +204,7 @@ body {
 
 /* On l'applique au body */
 body {
-    animation: sudden-glitch 10s infinite; /* Glitch violent toutes les 12 secondes */
+    animation: sudden-glitch 30s infinite; /* Glitch violent toutes les 12 secondes */
     /* background-color: #ffffff !important; */
 }
 
@@ -274,24 +271,25 @@ body::after {
     pointer-events: none; /* Pour ne pas bloquer les clics de souris */
     opacity: 0; /* Invisible par défaut */
     /* Même durée d'animation (10s) pour être parfaitement synchro avec sudden-glitch */
-    animation: glitch-scanline 10s infinite; 
+    animation: glitch-scanline 30s infinite; 
 }
 
+/* --- LIGNE DE BALAYAGE SYNCHRONISÉE (30s) --- */
 @keyframes glitch-scanline {
-    0%, 79% { 
+    0%, 93.9% { 
         opacity: 0; 
-        transform: translateY(-20vh); /* En attente au-dessus de l'écran */
+        transform: translateY(-20vh); 
     }
-    80% { 
-        opacity: 1; /* Apparaît au début du glitch */
+    94% { 
+        opacity: 1; 
         transform: translateY(0vh); 
     }
-    85% { 
+    98% { 
         opacity: 1; 
-        transform: translateY(100vh); /* Traverse tout l'écran vers le bas */
+        transform: translateY(100vh); 
     }
-    86%, 100% { 
-        opacity: 0; /* Disparaît dès que le glitch est fini */
+    99%, 100% { 
+        opacity: 0; 
         transform: translateY(120vh); 
     }
 }
