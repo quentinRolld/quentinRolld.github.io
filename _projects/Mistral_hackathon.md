@@ -47,7 +47,7 @@ Each round, the game asks a question, for example: Does your character wear glas
             </iframe>
         </div>
         <div class="caption text-center mt-2">
-            <strong>Demonstration:</strong> Mini-Apterros Yaw Control System.
+            <strong>Demonstration:</strong> Guess Who game with agentic interface and robot.
         </div>
     </div>
 </div>

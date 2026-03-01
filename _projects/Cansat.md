@@ -24,7 +24,9 @@ according to the Cansat 2023 régulation
 
 We first took part in the Cansat competition as part of our final-year project at ENSEA (our engineering school). Our course at ENSEA ended in January. But then, the 4 members of the group were separated during the period from January to June, as they were doing internships or academic exchanges abroad (USA, Canada and Spain). I therefore chose to pursue the project alone and bring it to fruition. I put a lot of time and energy into this project. The entire budget for this project came from my personal scholarship. I worked with the sole aim of delivering a working prototype on time for the C'space. I had a lot of fun on this project, which enabled me to develop a number of skills and put into practice my learning at ENSEA. 
 
-## Specifications
+***
+
+## --- Specifications ---
 
 ### Main mission: Control the Cansat and reach a precise point
 The CanSat must be able to navigate and control its trajectory to get as close as possible to a GPS position defined before release.
