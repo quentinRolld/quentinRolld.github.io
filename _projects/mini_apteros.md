@@ -72,15 +72,6 @@ the system speed is obtained by averaging the data of the accelerometer (by int
 
 
 
-<div class="ratio ratio-16x9" style="max-width: 900px; margin: 0 auto;">
-  <iframe 
-    src="https://www.youtube-nocookie.com/embed/CrK4TwWNbsY" 
-    title="Yaw Control" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-  </iframe>
-</div>
 
 <div style="width: 100%; display: flex; justify-content: center; margin: 2rem 0;">
     <div style="width: 100%; max-width: 1000px;">

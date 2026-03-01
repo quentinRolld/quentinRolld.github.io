@@ -34,15 +34,22 @@ Our goal is to create a system able to play "Guess who" against a human. In our 
 
 Each round, the game asks a question, for example: Does your character wear glasses? Then, using the robotic arm, it eliminates people based on the answer—to ultimately guess which card is the right one. The vision part of the analysis (which question to ask, which people to eliminate) is performed by a Mistral VLM, and the LLM agent orchestration is also handled by a Mistral LLM. The robotic arm policy obtains the position of the person to be eliminated and executes it as shown in the video.
 
-
-<div class="ratio ratio-16x9" style="max-width: 900px; margin: 0 auto;">
-  <iframe 
-    src="https://www.youtube-nocookie.com/embed/CrK4TwWNbsY" 
-    title="Yaw Control" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-  </iframe>
+<div style="width: 100%; display: flex; justify-content: center; margin: 2rem 0;">
+    <div style="width: 100%; max-width: 1000px;">
+        <div class="ratio ratio-16x9">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/TlyRnDddY2U?rel=0" 
+                title="Yaw Control" 
+                style="border: none; width: 100%; height: 100%;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="caption text-center mt-2">
+            <strong>Demonstration:</strong> Mini-Apterros Yaw Control System.
+        </div>
+    </div>
 </div>
 
 <div class="row">
