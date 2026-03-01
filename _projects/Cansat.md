@@ -30,9 +30,9 @@ We first took part in the Cansat competition as part of our final-year project a
 The CanSat must be able to navigate and control its trajectory to get as close as possible to a GPS position defined before release.
 
 ### ​​​​​​​Secondary missions
-* 1. Recognize a QR code on the ground
+1. Recognize a QR code on the ground
 A QR Code in A0 format will be placed on the ground, and our mission is to recognize the QR Code and retrieve the encoded information by telemetry or on-board recording (checked before and after release). QR codes contain text segments of variable size (less than 50 characters), which can contain any type of alphanumeric character. Signs are printed in A0 format. svg and png files are available on request.
-* 2. Deploying a ground structure
+2. Deploying a ground structure
 The CanSat must deploy a structure covering as much of the ground as possible. Each team decides on the nature, shape and size of the structure.
 
 ***
@@ -60,7 +60,7 @@ To recognize the QR codes and decipher the information they contain, we use a Ra
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/cansat_proto_img.jpeg" title="" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/raspi.png" title="" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -70,9 +70,18 @@ To recognize the QR codes and decipher the information they contain, we use a Ra
 ### Our solution :
 As the specifications were relatively succinct, there was a wide choice of possible solutions. In order to maximize surface area while minimizing overall volume, we decided to opt for an inflatable system. The system consists of a pneumatic valve, a striker, a servomotor and a CO2 capsule.
 
+<div class="row mt-5"> 
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/co2_1.png" title="" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/co2_2.png" title="" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/cansat_proto_img.jpeg" title="" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/Cansat_inflatable.jpeg" title="" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -84,12 +93,33 @@ Secondly, we need to design an on-board system to trigger the opening of the inf
 ## INTEGRATION
 
 ### Electronics Intregration
-We are using a STM32 nucleo as microcontroller. It will run the program and manage all the drivers. We have designed a PCB for the project. It contains the power components (5V and 3.3V converters) and allows to simplify the cabling. Minimizing the volume of the system is essential, so the PCB is designed with this in mind. It is divided into two parts (to be able to contain in the Cansat) which overlap.
+
+<div class="row">
+    <div class="col-sm-5 mt-3 mt-md-0">
+        <p>We are using a STM32 nucleo as microcontroller. It will run the program and manage all the drivers. We have designed a PCB for the project. It contains the power components (5V and 3.3V converters) and allows to simplify the cabling. Minimizing the volume of the system is essential, so the PCB is designed with this in mind. It is divided into two parts (to be able to contain in the Cansat) which overlap.</p>
+    </div>
+    <div class="col-sm-7 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/integration_electronic_structure.jpeg" title="Mini-Apterros System" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ### Software Integration
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/software_flowchart.jpeg" title="" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 * Software solution
 For the software, we are using C language. We developed two versions : one bare metal and one FreeRTOS. We had a problem near the end with the FreeRTOS version (with the GPS data reception) so we had to use the emergency bare metal solution. It is the one that we will present now :
  During the first iteration of the main function, we start by initializing all the drivers: IMU, GPS, infrared sensor and servos. By initializing the servos, it is a question of placing them in a position that allows the Cansat to enter the release capsule (indeed, if the arms are deployed, the Cansat does not contain in the capsule). When initialization is complete, we enter the while infinite loop. The first step in an iteration of this loop is to check if GPS data has been received (using a flag placed in the callback function of the UART, in interruption mode). If this is the case, the character string is processed, useful data (longitude, latitude and altitude) are extracted and are then stored in a structure. 
 Then, the software is monitoring the detection of the drop. This detection is operated by an infrared sensor which activates a flag the instant the Cansat exits the release tube. Once the launch is detected, the Cansat enters the "drop phase" : it deploys its arms and starts correcting its direction by measuring the local magnetic field and using its GPS position. Finally, when the Cansat is below the pre-determined altitude limit (15m above ground level), the inflation system is activated and releases the balloons. 
 
 ### Mechanical Integration
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/mechanical_integration.png" title="" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
