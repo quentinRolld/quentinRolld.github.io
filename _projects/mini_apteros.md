@@ -19,7 +19,6 @@ giscus_comments: true
 ***
 
 PERSEUS (European University and Scientific Space Research Student Project) is an initiative of the Launcher Directorate of the French National Center for Space Studies (CNES). "It is part of the preparation for the future. In a context of disruptive innovation, the CNES, as the driving force behind French space ambition, has as its main objective, through the PERSEUS project, to stimulate the interest and vocation of the new generation for careers and entrepreneurship in the field of launchers by projecting them into a future of discoveries, science and technology."
-https://www.perseusproject.com
 
 ## Introducing Mini-apterros
 
@@ -28,7 +27,7 @@ This project was proposed to us as part of our second year at ENSEA, the Nation
 
 <div class="text-center mt-4">
   <a href="https://www.youtube.com/watch?v=XWOvAuZyrhk" target="_blank" class="custom-hacker-btn">
-    EXTERNAL_SOURCE_LINK
+    Presentation video
   </a>
 </div>
 

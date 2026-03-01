@@ -203,10 +203,9 @@ body {
 
 
 /* On l'applique au body */
-body {
-    animation: sudden-glitch 30s infinite; /* Glitch violent toutes les 12 secondes */
-    /* background-color: #ffffff !important; */
-}
+/* body {
+    animation: sudden-glitch 30s infinite;
+} */
 
 /* --- PORTRAIT NÉON TRICOLORE --- */
 .profile {
@@ -252,14 +251,13 @@ body {
 
 /* --- LIGNE DE BALAYAGE (SCANLINE) SYNCHRONISÉE AVEC LE GLITCH --- */
 
-body::after {
+/* body::after {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 10vh; /* Épaisseur du faisceau lumineux */
-    /* Un dégradé transparent -> Cyan -> Rose -> transparent */
+    height: 10vh;
     background: linear-gradient(
         to bottom,
         rgba(0, 255, 255, 0) 0%,
@@ -267,15 +265,14 @@ body::after {
         rgba(255, 0, 255, 0.3) 60%,
         rgba(255, 0, 255, 0) 100%
     );
-    z-index: 9999; /* Par-dessus tout le reste */
-    pointer-events: none; /* Pour ne pas bloquer les clics de souris */
-    opacity: 0; /* Invisible par défaut */
-    /* Même durée d'animation (10s) pour être parfaitement synchro avec sudden-glitch */
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
     animation: glitch-scanline 30s infinite; 
-}
+} */
 
 /* --- LIGNE DE BALAYAGE SYNCHRONISÉE (30s) --- */
-@keyframes glitch-scanline {
+/* @keyframes glitch-scanline {
     0%, 93.9% { 
         opacity: 0; 
         transform: translateY(-20vh); 
@@ -292,7 +289,7 @@ body::after {
         opacity: 0; 
         transform: translateY(120vh); 
     }
-}
+} */
 
 
 
