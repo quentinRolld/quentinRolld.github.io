@@ -5,4 +5,5 @@ inline: true
 related_posts: false
 ---
 
-Submission to ICRA 2026 conference
+Assistant Professor at Sorbonne University for the year 2025/2026
+teaching Imitation Learning and Reinforcement Learning to 1st and 2nd year of master

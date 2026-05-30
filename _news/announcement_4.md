@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Assistant Professor at ENSTA Paris for the year 2025/2026
+Submission to ICRA 2026 conference
