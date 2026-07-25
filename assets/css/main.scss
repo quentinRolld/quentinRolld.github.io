@@ -21,7 +21,8 @@ $max-content-width: {{ site.max_width }};
   "font-awesome/regular",
   "tabler-icons/tabler-icons.scss",
   "tabler-icons/tabler-icons-filled.scss",
-  "tabler-icons/tabler-icons-outline.scss"
+  "tabler-icons/tabler-icons-outline.scss",
+  "profile-dynamic"
 ;
 
 
@@ -46,8 +47,14 @@ $max-content-width: {{ site.max_width }};
   filter: blur(90px);
   border-radius: 50%;
   opacity: 0.25;
-  mix-blend-mode: multiply; 
+  mix-blend-mode: multiply;
   animation: move-blob 25s infinite alternate ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
 }
 
 .blob-1 {
@@ -109,189 +116,15 @@ $max-content-width: {{ site.max_width }};
 
 
 
-/* --- CONFIGURATION FOND BLANC --- */
-/*
-body {
-    background-color: #ffffff !important;
-    overflow-x: hidden;
-    animation: sudden-glitch 8s infinite; 
-}
-*/
-/* --- LE FOND (DERRIÈRE) --- */
-/*
-.hacked-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; 
-    background: #ffffff;
-    pointer-events: none;
-}
-*/
-
-/* NEIGE DE TÉLÉVISION DISCRÈTE */
-/*
-.fine-snow {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-        repeating-radial-gradient(#000 0.0001%, #ffffff 0.0002%, #555 0.0003%, #ffffff 0.0004%);
-    background-size: 250px 250px;
-    opacity: 0.1;
-    animation: snow-drift 0.2s steps(2) infinite;
-}
-*/
-
-/* LIGNES ROUGES "INTERFÉRENCES" */
-/*
-.red-glitch-lines {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: repeating-linear-gradient(
-        transparent,
-        transparent 100px,
-        rgba(255, 0, 0, 0.13) 101px,
-        transparent 102px
-    );
-    background-size: 100% 100%;
-    animation: line-move 15s linear infinite;
-}
-*/
-
-/* --- LE GLITCH CHROMATIQUE AMPLIFIÉ (SANS COUPURE BLANCHE) --- */
-/* --- LE GLITCH CHROMATIQUE (CYCLE DE 30s) --- */
-@keyframes sudden-glitch {
-    /* Calme plat de 0% à 94% (soit environ 28 secondes de tranquillité) */
-    0%, 94%, 100% { 
-        transform: translate(0) scale(1) skewX(0);
-        filter: none;
-        text-shadow: none;
-    }
-    
-    /* Le glitch se déclenche sur les 2 dernières secondes (95% à 99%) */
-    95% {
-        transform: translate(-10px, 5px) scale(1.02) skewX(2deg);
-        text-shadow: 6px 0 #ff00ff, -6px 0 #00ff00;
-        filter: saturate(2);
-    }
-
-    96% {
-        transform: translate(15px, -10px) scale(1.02) skewX(-5deg);
-        filter: hue-rotate(150deg) contrast(1.5);
-        text-shadow: -10px 0 #00ffff, 10px 0 #ff00ff;
-    }
-
-    97% {
-        transform: translate(-5px, 5px) scale(1.05) skewX(15deg);
-        filter: brightness(1.2) contrast(4); 
-    }
-
-    98% {
-        transform: translate(-20px, 0) scale(1.02) skewX(-2deg);
-        text-shadow: 12px 0 #00ff00, -12px 0 #ff00ff;
-        filter: saturate(8);
-    }
-
-    99% {
-        transform: translate(2px, 2px) scale(1) skewX(0);
-        filter: blur(2px);
-    }
-}
-
-
-
-/* On l'applique au body */
-/* body {
-    animation: sudden-glitch 30s infinite;
-} */
-
-/* --- PORTRAIT NÉON TRICOLORE --- */
+/* --- PORTRAIT --- */
 .profile {
     position: relative;
     display: inline-block;
 }
 
-/* --- PORTRAIT NÉON TRICOLORE (FIXÉ) --- */
-.profile img.rounded-circle {
-    position: relative;
-    z-index: 5;
-    background-color: var(--global-bg-color); /* Empêche de voir à travers l'image */
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* On utilise des ombres plus saturées pour le blanc */
-    filter: 
-        drop-shadow(4px 2px 0px #00ff00)    /* Vert Néon */
-        drop-shadow(-4px -2px 0px #ff00ff)   /* Rose Néon */
-        drop-shadow(0px 0px 5px #00ffff);  /* Cyan Glow */
-}
-
-/* Effet d'excitation au survol */
-.profile:hover img.rounded-circle {
-    transform: scale(1.05) rotate(-1deg);
-    filter: 
-        drop-shadow(8px 4px 0px rgba(0, 255, 0, 0.8)) 
-        drop-shadow(-8px -4px 0px rgba(255, 0, 255, 0.8))
-        drop-shadow(0px 0px 15px rgba(0, 255, 255, 0.6))
-        contrast(1.2);
-}
-
-/* Optionnel : ajoute une petite animation de "vibration" uniquement sur la photo */
-.profile img.rounded-circle {
-    animation: profile-vibrate 5s infinite;
-}
-
-@keyframes profile-vibrate {
-    0%, 98%, 100% { transform: translate(0); }
-    98.5% { transform: translate(2px, -2px); }
-    99% { transform: translate(-2px, 2px); }
-}
-
-
-
-/* --- LIGNE DE BALAYAGE (SCANLINE) SYNCHRONISÉE AVEC LE GLITCH --- */
-
-/* body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 10vh;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 255, 255, 0) 0%,
-        rgba(0, 255, 255, 0.3) 40%,
-        rgba(255, 0, 255, 0.3) 60%,
-        rgba(255, 0, 255, 0) 100%
-    );
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0;
-    animation: glitch-scanline 30s infinite; 
-} */
-
-/* --- LIGNE DE BALAYAGE SYNCHRONISÉE (30s) --- */
-/* @keyframes glitch-scanline {
-    0%, 93.9% { 
-        opacity: 0; 
-        transform: translateY(-20vh); 
-    }
-    94% { 
-        opacity: 1; 
-        transform: translateY(0vh); 
-    }
-    98% { 
-        opacity: 1; 
-        transform: translateY(100vh); 
-    }
-    99%, 100% { 
-        opacity: 0; 
-        transform: translateY(120vh); 
-    }
-} */
-
-
+/* Tilt-on-hover / hover glow now live in _sass/_profile-dynamic.scss, */
+/* and the glitch/scanline/TV-static effects are wired up there too, */
+/* triggered on demand via the `body.glitch-active` class. */
 
 .custom-hacker-btn {
   padding: 10px 20px;

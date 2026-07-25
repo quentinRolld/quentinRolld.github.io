@@ -12,6 +12,12 @@ layout: default
       {% endif %}
     </h1>
     <p class="desc">{{ page.subtitle }}</p>
+    {% if page.roles %}
+      <p class="role-rotator" aria-hidden="true">
+        <span class="role-rotator-prompt">&gt;</span>
+        <span class="role-rotator-text" data-roles="{{ page.roles | join: '|' }}"></span><span class="role-rotator-cursor">_</span>
+      </p>
+    {% endif %}
   </header>
 
   <article>
@@ -71,6 +77,7 @@ layout: default
 
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
+      <button type="button" id="glitch-trigger" class="custom-hacker-btn" title="???">[ sudo glitch ]</button>
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
@@ -78,3 +85,20 @@ layout: default
     {% endif %}
   </article>
 </div>
+
+<div class="robot-wrapper" id="profile-robot" aria-hidden="true">
+  <div class="robot" id="robot-figure">
+    <div class="robot-antenna"><span></span></div>
+    <div class="robot-head">
+      <div class="robot-eye left"></div>
+      <div class="robot-eye right"></div>
+    </div>
+    <div class="robot-body"></div>
+    <div class="robot-arm left"></div>
+    <div class="robot-arm right"></div>
+    <div class="robot-leg left"></div>
+    <div class="robot-leg right"></div>
+  </div>
+</div>
+
+<script defer src="{{ '/assets/js/profile-dynamic.js' | relative_url | bust_file_cache }}"></script>

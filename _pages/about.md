@@ -4,6 +4,13 @@ title: about
 permalink: /
 subtitle: <a href='#'>PhD candidate - CEA List - INRIA Nancy</a>
 
+roles:
+  - PhD candidate
+  - Robotics
+  - Computer Vision
+  - Imitation Learning
+  - Anomaly Detection
+
 profile:
   align: right
   image: prof_pic.jpg
@@ -40,5 +47,3 @@ I am a French PhD candidate at CEA List Saclay, in collaboration with INRIA Nanc
 [Github](https://github.com/quentinRolld) - 
 [X](https://x.com/quentin_rollnd) -
 [LetterBox](https://boxd.it/ccQ01)
-
-contact: quentin.rolland2@cea.fr
