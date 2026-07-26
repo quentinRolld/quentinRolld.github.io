@@ -4,7 +4,6 @@ title: bookshelf
 nav: true
 nav_order: 7
 permalink: /books/
-nav: false
 collection: books
 ---
 
