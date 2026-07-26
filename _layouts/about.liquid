@@ -86,19 +86,39 @@ layout: default
   </article>
 </div>
 
-<div class="robot-wrapper" id="profile-robot" aria-hidden="true">
-  <div class="robot" id="robot-figure">
-    <div class="robot-antenna"><span></span></div>
-    <div class="robot-head">
-      <div class="robot-eye left"></div>
-      <div class="robot-eye right"></div>
+{% assign robot_specs = "a|bottom,b|top,c|left,d|right" | split: "," %}
+{% for spec in robot_specs %}
+  {% assign parts = spec | split: "|" %}
+  <div class="robot-wrapper robot--{{ parts[0] }}" data-edge="{{ parts[1] }}" aria-hidden="true">
+    <div class="robot-orient">
+      <div class="robot-scale">
+        <div class="robot" data-robot>
+          <div class="robot-antenna"><span></span></div>
+          <div class="robot-head">
+            <div class="robot-eye left"></div>
+            <div class="robot-eye right"></div>
+          </div>
+          <div class="robot-body"></div>
+          <div class="robot-arm left"></div>
+          <div class="robot-arm right"></div>
+          <div class="robot-hip left">
+            <div class="robot-thigh">
+              <div class="robot-shin">
+                <div class="robot-foot"></div>
+              </div>
+            </div>
+          </div>
+          <div class="robot-hip right">
+            <div class="robot-thigh">
+              <div class="robot-shin">
+                <div class="robot-foot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="robot-body"></div>
-    <div class="robot-arm left"></div>
-    <div class="robot-arm right"></div>
-    <div class="robot-leg left"></div>
-    <div class="robot-leg right"></div>
   </div>
-</div>
+{% endfor %}
 
 <script defer src="{{ '/assets/js/profile-dynamic.js' | relative_url | bust_file_cache }}"></script>

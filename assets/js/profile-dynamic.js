@@ -1,7 +1,7 @@
 /*
  * Dynamic elements for the profile ("about") page: role rotator, scroll
- * reveal, interactive photo tilt, a walking robot mascot, and a hidden
- * glitch easter egg. Only loaded on the about page (see about.liquid), and
+ * reveal, interactive photo tilt, a small family of walking robot mascots,
+ * and a hidden glitch easter egg. Only loaded on the about page (see about.liquid), and
  * every effect degrades to a static/no-op state under
  * prefers-reduced-motion.
  */
@@ -105,71 +105,91 @@ function initPhotoTilt(prefersReducedMotion) {
 }
 
 function initRobot(prefersReducedMotion) {
-  var wrapper = document.getElementById("profile-robot");
-  var figure = document.getElementById("robot-figure");
-  if (!wrapper || !figure) return;
+  var wrappers = document.querySelectorAll(".robot-wrapper");
+  if (wrappers.length === 0) return;
 
-  var robotWidth = 46;
+  var size = 46;
+  var robots = [];
+
+  wrappers.forEach(function (wrapper, index) {
+    var figure = wrapper.querySelector("[data-robot]");
+    if (!figure) return;
+    var edge = wrapper.dataset.edge || "bottom";
+    robots.push({
+      wrapper: wrapper,
+      figure: figure,
+      axis: edge === "left" || edge === "right" ? "y" : "x",
+      pos: 16 + index * 60,
+      direction: 1,
+      speed: 0.35 + Math.random() * 0.5,
+      paused: false,
+    });
+  });
+
+  function setPosition(robot) {
+    robot.wrapper.style.transform =
+      robot.axis === "x" ? "translateX(" + robot.pos + "px)" : "translateY(" + robot.pos + "px)";
+    // The .robot-orient ancestor rotates the whole creature to match its
+    // edge (upright/upside down/sideways), so this mirror flip always ends
+    // up reading as "facing the direction of travel" once rotated.
+    robot.figure.style.transform = robot.direction === 1 ? "scaleX(1)" : "scaleX(-1)";
+  }
 
   if (prefersReducedMotion) {
-    wrapper.style.transform = "translateX(20px)";
+    robots.forEach(setPosition);
     return;
   }
 
-  var x = 20;
-  var direction = 1;
-  var speed = 0.6;
-  var paused = false;
-
-  function setPosition() {
-    wrapper.style.transform = "translateX(" + x + "px)";
-    figure.style.transform = direction === 1 ? "scaleX(1)" : "scaleX(-1)";
-  }
-
-  function wave(duration) {
-    figure.classList.remove("walking");
-    figure.classList.add("waving");
+  function wave(robot, duration) {
+    robot.figure.classList.remove("walking");
+    robot.figure.classList.add("waving");
     setTimeout(function () {
-      figure.classList.remove("waving");
-      paused = false;
-      scheduleIdle();
+      robot.figure.classList.remove("waving");
+      robot.paused = false;
+      scheduleIdle(robot);
     }, duration);
   }
 
-  function scheduleIdle() {
-    var delay = 4000 + Math.random() * 6000;
+  function scheduleIdle(robot) {
+    var delay = 3500 + Math.random() * 7000;
     setTimeout(function () {
-      if (paused) return;
-      paused = true;
-      wave(1200 + Math.random() * 800);
+      if (robot.paused) return;
+      robot.paused = true;
+      wave(robot, 1200 + Math.random() * 800);
     }, delay);
   }
 
   function step() {
-    var maxX = window.innerWidth - robotWidth - 10;
-    if (!paused) {
-      figure.classList.add("walking");
-      x += speed * direction;
-      if (x >= maxX) {
-        x = maxX;
-        direction = -1;
-      } else if (x <= 10) {
-        x = 10;
-        direction = 1;
+    var maxX = window.innerWidth - size - 10;
+    var maxY = window.innerHeight - size - 10;
+    robots.forEach(function (robot) {
+      if (!robot.paused) {
+        robot.figure.classList.add("walking");
+        var max = robot.axis === "x" ? maxX : maxY;
+        robot.pos += robot.speed * robot.direction;
+        if (robot.pos >= max) {
+          robot.pos = max;
+          robot.direction = -1;
+        } else if (robot.pos <= 10) {
+          robot.pos = 10;
+          robot.direction = 1;
+        }
+        setPosition(robot);
       }
-      setPosition();
-    }
+    });
     requestAnimationFrame(step);
   }
 
-  figure.addEventListener("click", function () {
-    if (paused) return;
-    paused = true;
-    wave(1200);
+  robots.forEach(function (robot) {
+    robot.figure.addEventListener("click", function () {
+      if (robot.paused) return;
+      robot.paused = true;
+      wave(robot, 1200);
+    });
+    setPosition(robot);
+    scheduleIdle(robot);
   });
 
-  setPosition();
-  scheduleIdle();
   requestAnimationFrame(step);
 }
 

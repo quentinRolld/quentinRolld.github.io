@@ -83,17 +83,87 @@
   }
 }
 
-// --- Walking robot mascot ---------------------------------------------------
+// --- Walking robot mascots ---------------------------------------------------
+// A little family of creatures wanders the page independently (see
+// profile-dynamic.js). They share the same accent color (the theme color),
+// but differ in size, gait, silhouette, and which edge of the screen they
+// patrol (bottom/top for a horizontal walk, left/right for a vertical one).
 
 .robot-wrapper {
   position: fixed;
-  bottom: 14px;
-  left: 0;
   width: 46px;
   height: 60px;
   z-index: 3;
   pointer-events: none;
   will-change: transform;
+}
+
+.robot-wrapper[data-edge="bottom"] {
+  bottom: 14px;
+  left: 0;
+}
+
+.robot-wrapper[data-edge="top"] {
+  top: 14px;
+  left: 0;
+}
+
+.robot-wrapper[data-edge="left"] {
+  left: 14px;
+  top: 0;
+}
+
+.robot-wrapper[data-edge="right"] {
+  right: 14px;
+  top: 0;
+}
+
+// Rotates the whole creature so it stands on whichever edge it patrols:
+// upright on the floor, upside down on the ceiling, sideways on a wall.
+.robot-orient {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.robot-wrapper[data-edge="bottom"] .robot-orient {
+  transform: rotate(0deg);
+}
+
+.robot-wrapper[data-edge="top"] .robot-orient {
+  transform: rotate(180deg);
+}
+
+.robot-wrapper[data-edge="left"] .robot-orient {
+  transform: rotate(90deg);
+}
+
+.robot-wrapper[data-edge="right"] .robot-orient {
+  transform: rotate(-90deg);
+}
+
+.robot-scale {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+// b: flatter rectangle silhouette, slightly smaller
+.robot--b .robot-scale {
+  transform: scale(0.82);
+  transform-origin: bottom center;
+}
+
+// c: round/oval silhouette, a bit bigger
+.robot--c .robot-scale {
+  transform: scale(1.12);
+  transform-origin: bottom center;
+}
+
+// d: triangular silhouette
+.robot--d .robot-scale {
+  transform: scale(0.92);
+  transform-origin: bottom center;
 }
 
 .robot {
@@ -138,6 +208,24 @@
   border: 2px solid var(--global-text-color-light);
 }
 
+// b: flatter rectangle head
+.robot--b .robot-head {
+  height: 12px;
+  border-radius: 3px;
+}
+
+// c: round head
+.robot--c .robot-head {
+  border-radius: 50%;
+}
+
+// d: triangular head (no outline; clip-path can't be bordered cleanly)
+.robot--d .robot-head {
+  border: none;
+  border-radius: 0;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
 .robot-eye {
   position: absolute;
   top: 7px;
@@ -156,6 +244,10 @@
   right: 5px;
 }
 
+.robot--d .robot-eye {
+  top: 13px;
+}
+
 .robot-body {
   position: absolute;
   top: 19px;
@@ -166,6 +258,24 @@
   border-radius: 8px;
   background: var(--global-card-bg-color);
   border: 2px solid var(--global-text-color-light);
+}
+
+// b: flatter rectangle body
+.robot--b .robot-body {
+  height: 16px;
+  border-radius: 4px;
+}
+
+// c: round/oval body
+.robot--c .robot-body {
+  border-radius: 50%;
+}
+
+// d: triangular body
+.robot--d .robot-body {
+  border: none;
+  border-radius: 0;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
 .robot-body::after {
@@ -179,6 +289,10 @@
   border-radius: 50%;
   background: var(--global-theme-color);
   opacity: 0.85;
+}
+
+.robot--d .robot-body::after {
+  top: 14px;
 }
 
 .robot-arm {
@@ -199,51 +313,133 @@
   right: 2px;
 }
 
-.robot-leg {
+// Articulated leg: hip (anchor) > thigh (hip joint) > shin (knee joint) >
+// foot (ankle joint). Nested transforms compose, so rotating the thigh
+// carries the shin and foot with it — a real kinematic chain instead of a
+// single rigid rotating bar.
+.robot-hip {
   position: absolute;
-  bottom: 0;
+  top: 44px;
   width: 6px;
-  height: 14px;
-  border-radius: 3px;
+}
+
+.robot-hip.left {
+  left: 11px;
+}
+
+.robot-hip.right {
+  right: 11px;
+}
+
+.robot-thigh {
+  position: relative;
+  width: 6px;
+  height: 8px;
+  border-radius: 3px 3px 0 0;
   background: var(--global-text-color-light);
   transform-origin: top center;
 }
 
-.robot-leg.left {
-  left: 11px;
+.robot-shin {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 6px;
+  height: 7px;
+  border-radius: 0 0 3px 3px;
+  background: var(--global-text-color-light);
+  transform-origin: top center;
 }
 
-.robot-leg.right {
-  right: 11px;
+.robot-foot {
+  position: absolute;
+  top: 6px;
+  left: -2px;
+  width: 10px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--global-text-color-light);
+  transform-origin: 40% 0%;
 }
 
 .robot.walking {
   animation: robot-bob 0.4s infinite ease-in-out;
 }
 
-.robot.walking .robot-leg.left {
-  animation: robot-leg-swing 0.4s infinite ease-in-out;
+.robot.walking .robot-thigh {
+  animation: leg-thigh-walk 0.9s infinite linear;
 }
 
-.robot.walking .robot-leg.right {
-  animation: robot-leg-swing 0.4s infinite ease-in-out reverse;
+.robot.walking .robot-shin {
+  animation: leg-shin-walk 0.9s infinite linear;
+}
+
+.robot.walking .robot-foot {
+  animation: leg-foot-walk 0.9s infinite linear;
+}
+
+// Offset the right leg by half a stride so the two legs alternate.
+.robot.walking .robot-hip.right .robot-thigh,
+.robot.walking .robot-hip.right .robot-shin,
+.robot.walking .robot-hip.right .robot-foot {
+  animation-delay: -0.45s;
 }
 
 .robot.walking .robot-arm.left {
-  animation: robot-leg-swing 0.4s infinite ease-in-out reverse;
+  animation: arm-swing 0.9s infinite ease-in-out reverse;
 }
 
 .robot.walking .robot-arm.right {
-  animation: robot-leg-swing 0.4s infinite ease-in-out;
+  animation: arm-swing 0.9s infinite ease-in-out;
 }
 
 .robot.waving .robot-arm.right {
   animation: robot-wave 1.2s ease-in-out;
 }
 
-@keyframes robot-leg-swing {
+@keyframes arm-swing {
   0%, 100% { transform: rotate(20deg); }
   50% { transform: rotate(-20deg); }
+}
+
+// A simplified human gait cycle: heel-strike -> stance -> toe-off -> swing.
+// The knee (shin) stays nearly straight during stance and bends sharply
+// during swing to clear the ground; the foot dorsiflexes at heel-strike
+// and pushes off at toe-off.
+@keyframes leg-thigh-walk {
+  0%    { transform: rotate(22deg); }
+  12.5% { transform: rotate(14deg); }
+  25%   { transform: rotate(0deg); }
+  37.5% { transform: rotate(-14deg); }
+  50%   { transform: rotate(-24deg); }
+  62.5% { transform: rotate(-10deg); }
+  75%   { transform: rotate(10deg); }
+  87.5% { transform: rotate(20deg); }
+  100%  { transform: rotate(22deg); }
+}
+
+@keyframes leg-shin-walk {
+  0%    { transform: rotate(4deg); }
+  12.5% { transform: rotate(10deg); }
+  25%   { transform: rotate(0deg); }
+  37.5% { transform: rotate(-2deg); }
+  50%   { transform: rotate(18deg); }
+  62.5% { transform: rotate(55deg); }
+  75%   { transform: rotate(35deg); }
+  87.5% { transform: rotate(-5deg); }
+  100%  { transform: rotate(4deg); }
+}
+
+@keyframes leg-foot-walk {
+  0%    { transform: rotate(-12deg); }
+  12.5% { transform: rotate(0deg); }
+  25%   { transform: rotate(0deg); }
+  37.5% { transform: rotate(8deg); }
+  50%   { transform: rotate(-15deg); }
+  62.5% { transform: rotate(20deg); }
+  75%   { transform: rotate(10deg); }
+  87.5% { transform: rotate(-5deg); }
+  100%  { transform: rotate(-12deg); }
 }
 
 @keyframes robot-bob {
@@ -264,7 +460,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .robot,
-  .robot-leg,
+  .robot-head,
+  .robot-thigh,
+  .robot-shin,
+  .robot-foot,
   .robot-arm,
   .robot-eye {
     animation: none !important;
