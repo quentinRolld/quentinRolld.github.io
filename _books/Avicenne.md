@@ -1,13 +1,12 @@
 ---
 layout: book-review
-title: La où chantent les écrevisses
-author: Delia Owens
-cover: assets/img/book_covers/ecrevisses.png
+title: Avicenne ou la route d'Ispahan
+author: Gilbert Sinoue
+cover: assets/img/book_covers/avicenne.jpg
 olid:  # use Open Library ID to fetch cover (if no `cover` is provided)
 isbn:  # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
-categories: roman
+categories: historical novel
 tags: top-100
-buy_link: https://www.amazon.com/Godfather-Deluxe-Mario-Puzo/dp/0593542592
 started: 2024-08-23
 finished: 2024-09-07
 released: 1969
