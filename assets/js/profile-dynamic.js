@@ -166,12 +166,16 @@ function initRobot(prefersReducedMotion) {
       if (!robot.paused) {
         robot.figure.classList.add("walking");
         var max = robot.axis === "x" ? maxX : maxY;
+        // Vertical (left/right wall) walkers must stay clear of the fixed
+        // navbar at the top of the screen; horizontal ones just need the
+        // screen edge.
+        var min = robot.axis === "y" ? 74 : 10;
         robot.pos += robot.speed * robot.direction;
         if (robot.pos >= max) {
           robot.pos = max;
           robot.direction = -1;
-        } else if (robot.pos <= 10) {
-          robot.pos = 10;
+        } else if (robot.pos <= min) {
+          robot.pos = min;
           robot.direction = 1;
         }
         setPosition(robot);
@@ -201,14 +205,57 @@ function initGlitchEasterEgg(prefersReducedMotion) {
   if (!trigger) return;
 
   var active = false;
+  var jumpTimer = null;
+
+  function randomBetween(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  // A real corrupted frame doesn't ease in and out - it snaps. Most jumps
+  // are tiny and furtive; occasionally (~15%) a big violent one lands.
+  function fireGlitchJump() {
+    var isBig = Math.random() < 0.15;
+    var magnitude = isBig ? randomBetween(16, 38) : randomBetween(1, 5);
+    var skew = isBig ? randomBetween(-14, 14) : randomBetween(-2, 2);
+    var x = randomBetween(-magnitude, magnitude);
+    var y = randomBetween(-magnitude * 0.5, magnitude * 0.5);
+
+    document.body.style.transition = "none";
+    document.body.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) skewX(" + skew.toFixed(1) + "deg)";
+    document.body.style.filter = isBig
+      ? "hue-rotate(" + Math.round(randomBetween(60, 300)) + "deg) saturate(" + randomBetween(2, 6).toFixed(1) + ") contrast(" + randomBetween(1.3, 3).toFixed(1) + ")"
+      : "saturate(" + randomBetween(1, 1.6).toFixed(1) + ")";
+
+    var holdTime = isBig ? randomBetween(60, 140) : randomBetween(15, 45);
+    setTimeout(function () {
+      document.body.style.transform = "";
+      document.body.style.filter = "";
+    }, holdTime);
+  }
+
+  function scheduleNextJump() {
+    if (!active) return;
+    // Mostly rapid-fire, with occasional short lulls so the rhythm never
+    // settles into something predictable.
+    var delay = Math.random() < 0.2 ? randomBetween(220, 420) : randomBetween(30, 140);
+    jumpTimer = setTimeout(function () {
+      fireGlitchJump();
+      scheduleNextJump();
+    }, delay);
+  }
 
   function activate() {
     if (active) return;
     active = true;
     document.body.classList.add("glitch-active");
+    scheduleNextJump();
     setTimeout(function () {
-      document.body.classList.remove("glitch-active");
       active = false;
+      clearTimeout(jumpTimer);
+      document.body.classList.remove("glitch-active");
+      document.body.style.transform = "";
+      document.body.style.filter = "";
+      document.body.style.transition = "";
     }, 5000);
   }
 
