@@ -606,8 +606,7 @@ body.glitch-active .glitch-message {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10000;
-  width: calc(100vw - 2.5rem);
-  max-width: 340px;
+  max-width: min(300px, 100vw - 2.5rem);
   padding: 1.25rem 1.75rem;
   background: rgba(0, 0, 0, 0.75);
   border: 2px solid #00ffff;
@@ -630,27 +629,6 @@ body.glitch-active .glitch-message {
   text-transform: uppercase;
   color: #fff;
   text-shadow: 3px 0 #ff00ff, -3px 0 #00ffff;
-}
-
-.glitch-message-subtitle {
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: #00ffff;
-  text-transform: uppercase;
-}
-
-.glitch-message-options {
-  align-self: stretch;
-  margin: 0.2rem 0 0;
-  padding-left: 1.2em;
-  text-align: left;
-  font-size: 0.75rem;
-  line-height: 1.4;
-  color: #fff;
-}
-
-.glitch-message-options li + li {
-  margin-top: 0.25rem;
 }
 
 @keyframes snow-drift {
