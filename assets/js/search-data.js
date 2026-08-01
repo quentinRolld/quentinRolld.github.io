@@ -243,6 +243,11 @@ ninja.data = [{
           description: "Mistral AI - Huggingface - Robotics Hackathon",
           section: "Projects",handler: () => {
               window.location.href = "/projects/Mistral_hackathon/";
+            },},{id: "projects-urban-jungle",
+          title: 'Urban Jungle',
+          description: "an automatic watering system for thirsty plants",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/Plant_watering/";
             },},{id: "projects-wall-e-wish",
           title: 'Wall-E-wish',
           description: "A robot to tidy my bedroom",
