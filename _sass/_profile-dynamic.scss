@@ -104,8 +104,8 @@
 }
 
 .robot-wrapper[data-edge="top"] {
-  // Below the fixed navbar (~60px), not underneath it.
-  top: 74px;
+  // Just below the fixed navbar (56px, see body.fixed-top-nav in _layout.scss).
+  top: 60px;
   left: 0;
 }
 
