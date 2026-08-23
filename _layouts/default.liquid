@@ -25,14 +25,22 @@
       <div class="blob blob-3"></div>
     </div> 
 
-    <div class="hacked-background" aria-hidden="true">
-      <div class="fine-snow"></div>
-      <div class="red-glitch-lines"></div>
+    <div class="disco-dim" aria-hidden="true"></div>
+    <div class="disco-floor" aria-hidden="true"></div>
+
+    <div class="disco-string" aria-hidden="true"></div>
+    <div class="disco-ball-track" aria-hidden="true">
+      <div class="disco-ball">
+        <div class="disco-ball-texture"></div>
+      </div>
     </div>
 
-    <div class="glitch-message" aria-hidden="true">
-      <div class="glitch-message-icon">🏴‍☠️</div>
-      <div class="glitch-message-title">You've been hacked by reviewer 2</div>
+    {% assign disco_light_specs = "8,15,0.0|85,10,0.4|15,55,0.8|90,60,0.2|45,8,0.6|60,80,1.0|10,85,0.3|75,35,0.7|30,30,0.5|55,50,0.1|20,70,0.9|80,80,0.45" | split: "|" %}
+    <div class="disco-lights" aria-hidden="true">
+      {% for spec in disco_light_specs %}
+        {% assign parts = spec | split: "," %}
+        <span class="disco-light" style="--dl-x: {{ parts[0] }}%; --dl-y: {{ parts[1] }}%; --dl-delay: {{ parts[2] }}s;"></span>
+      {% endfor %}
     </div>
 
     <!-- Header -->

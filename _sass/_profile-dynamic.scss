@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Dynamic elements for the profile ("about") page: role rotator, scroll
- * reveal, interactive photo tilt, research-area constellation canvas, and a
- * hidden glitch easter egg. Scoped so it has no effect on other pages.
+ * reveal, interactive photo tilt, a family of walking robot mascots, and a
+ * hidden disco-ball easter egg. Scoped so it has no effect on other pages.
  ******************************************************************************/
 
 // --- Role rotator (terminal-style typewriter under the name) ---------------
@@ -249,53 +249,6 @@
   top: 13px;
 }
 
-// During the glitch easter egg, the robots turn angry and fire laser
-// beams from their eyes. Purely CSS-driven off body.glitch-active, so
-// they snap back to normal the instant the glitch ends.
-body.glitch-active .robot-eye {
-  background: #ff2020;
-  box-shadow: 0 0 5px #ff2020, 0 0 10px rgba(255, 32, 32, 0.8);
-}
-
-body.glitch-active .robot-eye::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  width: 7px;
-  height: 2px;
-  background: var(--global-text-color-light);
-}
-
-body.glitch-active .robot-eye.left::before {
-  left: -1px;
-  transform: rotate(-20deg);
-}
-
-body.glitch-active .robot-eye.right::before {
-  right: -1px;
-  transform: rotate(20deg);
-}
-
-body.glitch-active .robot-eye::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 34px;
-  height: 2px;
-  background: linear-gradient(90deg, #ff2020, rgba(255, 32, 32, 0));
-  box-shadow: 0 0 6px #ff2020;
-  transform: translateY(-50%);
-}
-
-body.glitch-active .robot-eye.left::after {
-  right: 100%;
-  background: linear-gradient(270deg, #ff2020, rgba(255, 32, 32, 0));
-}
-
-body.glitch-active .robot-eye.right::after {
-  left: 100%;
-}
-
 .robot-body {
   position: absolute;
   top: 19px;
@@ -445,9 +398,47 @@ body.glitch-active .robot-eye.right::after {
   animation: robot-wave 1.2s ease-in-out;
 }
 
+// Dancefloor mode (see the disco ball easter egg below): robots stop
+// patrolling and wiggle in place instead.
+.robot.dancing {
+  animation: robot-dance 0.6s ease-in-out infinite;
+}
+
+.robot.dancing .robot-arm.left {
+  animation: robot-dance-arm 0.6s ease-in-out infinite;
+}
+
+.robot.dancing .robot-arm.right {
+  animation: robot-dance-arm 0.6s ease-in-out infinite reverse;
+}
+
+.robot.dancing .robot-hip.left .robot-thigh,
+.robot.dancing .robot-hip.right .robot-thigh {
+  animation: robot-dance-leg 0.6s ease-in-out infinite;
+}
+
+.robot.dancing .robot-hip.right .robot-thigh {
+  animation-delay: 0.3s;
+}
+
 @keyframes arm-swing {
   0%, 100% { transform: rotate(20deg); }
   50% { transform: rotate(-20deg); }
+}
+
+@keyframes robot-dance {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-5px) rotate(6deg); }
+}
+
+@keyframes robot-dance-arm {
+  0%, 100% { transform: rotate(-30deg); }
+  50% { transform: rotate(55deg); }
+}
+
+@keyframes robot-dance-leg {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(12deg); }
 }
 
 // A simplified human gait cycle: heel-strike -> stance -> toe-off -> swing.
@@ -518,7 +509,11 @@ body.glitch-active .robot-eye.right::after {
   }
 }
 
-// --- Glitch easter egg -------------------------------------------------------
+// --- Disco ball easter egg ---------------------------------------------------
+// Trigger: the small button near the social links, or a click on the
+// profile photo (see initDiscoParty in profile-dynamic.js). A mirror ball
+// drops in on a string, spins, throws colored light around a dimmed page,
+// and the robots stop patrolling to dance (see .robot.dancing above).
 
 .custom-hacker-btn {
   font-size: 0.8rem;
@@ -526,143 +521,232 @@ body.glitch-active .robot-eye.right::after {
   margin-top: 0.75rem;
 }
 
-.hacked-background {
-  display: none;
-}
-
-// The body's own translate/skew/filter jitter is driven directly from JS
-// (see fireGlitchJump in profile-dynamic.js) with randomized magnitude and
-// timing, so it reads as an irregular display-corruption jump rather than a
-// smooth, predictable wave.
-body.glitch-active {
+body.disco-active {
   overflow-x: hidden;
 }
 
-body.glitch-active .hacked-background {
-  display: block;
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-}
-
-body.glitch-active .fine-snow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: repeating-radial-gradient(#000 0.0001%, #fff 0.0002%, #555 0.0003%, #fff 0.0004%);
-  background-size: 250px 250px;
-  opacity: 0.12;
-  animation: snow-drift 0.12s steps(2) infinite;
-}
-
-body.glitch-active .red-glitch-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    transparent,
-    transparent 100px,
-    rgba(255, 0, 0, 0.13) 101px,
-    transparent 102px
-  );
-  animation: line-move 2.5s linear infinite;
-}
-
-body.glitch-active::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 10vh;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 255, 255, 0) 0%,
-    rgba(0, 255, 255, 0.3) 40%,
-    rgba(255, 0, 255, 0.3) 60%,
-    rgba(255, 0, 255, 0) 100%
-  );
-  z-index: 9999;
-  pointer-events: none;
-  animation: glitch-scanline 0.5s infinite;
-}
-
-.glitch-message {
+.disco-dim {
   display: none;
 }
 
-body.glitch-active .glitch-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
+body.disco-active .disco-dim {
+  display: block;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10000;
-  max-width: min(300px, 100vw - 2.5rem);
-  padding: 1.25rem 1.75rem;
-  background: rgba(0, 0, 0, 0.75);
-  border: 2px solid #00ffff;
-  border-radius: 4px;
+  inset: 0;
+  z-index: 9995;
   pointer-events: none;
-  text-align: center;
-  font-family: monospace;
-  animation: glitch-message-flicker 0.5s infinite;
+  background: #000;
+  opacity: 0;
+  animation: disco-dim-fade 8s ease forwards;
 }
 
-.glitch-message-icon {
-  font-size: 2.5rem;
-  line-height: 1;
+.disco-floor {
+  display: none;
 }
 
-.glitch-message-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 3px 0 #ff00ff, -3px 0 #00ffff;
+body.disco-active .disco-floor {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 9996;
+  pointer-events: none;
+  background: conic-gradient(from 0deg, #ff3fc4, #3fd4ff, #ffe23f, #6bff3f, #ff3fc4);
+  opacity: 0;
+  mix-blend-mode: color-dodge;
+  animation: disco-floor-fade 8s ease forwards, disco-floor-spin 6s linear infinite;
 }
 
-@keyframes snow-drift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-3px, 2px); }
+.disco-string {
+  display: none;
 }
 
-@keyframes line-move {
-  0% { background-position-y: 0; }
-  100% { background-position-y: 100px; }
+body.disco-active .disco-string {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.75));
+  transform: translateX(-50%);
+  z-index: 9998;
+  pointer-events: none;
+  animation: disco-string-extend 8s cubic-bezier(0.22, 0.75, 0.3, 1) forwards;
 }
 
-@keyframes glitch-scanline {
-  0%, 10% { opacity: 0; transform: translateY(-20vh); }
-  20% { opacity: 1; transform: translateY(0); }
-  80% { opacity: 1; transform: translateY(100vh); }
-  90%, 100% { opacity: 0; transform: translateY(120vh); }
+.disco-ball-track {
+  display: none;
 }
 
-@keyframes glitch-message-flicker {
-  0%, 100% { opacity: 1; }
-  45% { opacity: 1; }
-  50% { opacity: 0.4; }
-  55% { opacity: 1; }
-  72% { opacity: 0.7; }
-  76% { opacity: 1; }
+body.disco-active .disco-ball-track {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  z-index: 9998;
+  pointer-events: none;
+  animation: disco-ball-drop 8s cubic-bezier(0.22, 0.75, 0.3, 1) forwards;
+}
+
+// The outer ball is a static circle: the specular highlight and the sphere
+// shading live here and never move, exactly like a fixed light source
+// hitting a ball that's turning underneath it. Only the tile texture
+// (.disco-ball-texture) slides, which is what actually reads as rotation.
+.disco-ball {
+  position: absolute;
+  top: -32px;
+  left: -32px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.15) 28%, transparent 46%),
+    radial-gradient(circle at 45% 40%, #f2f5f9 0%, #cad2de 45%, #97a2b5 75%, #6b7284 100%);
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.55), 0 0 55px rgba(255, 255, 255, 0.25), inset -8px -8px 16px rgba(0, 0, 0, 0.4);
+}
+
+// A grid of small square mirror tiles, twice as wide as the ball. Sliding
+// it sideways (see disco-ball-spin) and looping by exactly one tile width
+// simulates the facets wrapping around a sphere spinning on the string's
+// axis — the ball's own silhouette (.disco-ball above) never moves or
+// distorts, only its surface pattern does.
+.disco-ball-texture {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(18, 22, 30, 0.45) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(90deg, rgba(18, 22, 30, 0.45) 0 1px, transparent 1px 8px);
+}
+
+body.disco-active .disco-ball-texture {
+  animation: disco-ball-spin 1s linear infinite;
+}
+
+// The mounting cap where the string attaches. Lives on the (non-spinning)
+// track rather than on .disco-ball itself, so it stays put at the top
+// while the ball spins underneath it instead of orbiting around.
+.disco-ball-track::after {
+  content: "";
+  position: absolute;
+  top: -38px;
+  left: -5px;
+  width: 10px;
+  height: 6px;
+  border-radius: 3px 3px 0 0;
+  background: #4a4f5c;
+}
+
+.disco-lights {
+  display: none;
+}
+
+body.disco-active .disco-lights {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+}
+
+.disco-light {
+  position: absolute;
+  top: var(--dl-y);
+  left: var(--dl-x);
+  width: 100px;
+  height: 100px;
+  margin: -50px 0 0 -50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 35%, transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.disco-light:nth-child(3n+1) {
+  background: radial-gradient(circle, rgba(255, 90, 220, 0.9) 0%, rgba(255, 90, 220, 0.25) 35%, transparent 70%);
+}
+
+.disco-light:nth-child(3n+2) {
+  background: radial-gradient(circle, rgba(90, 220, 255, 0.9) 0%, rgba(90, 220, 255, 0.25) 35%, transparent 70%);
+}
+
+.disco-light:nth-child(3n) {
+  background: radial-gradient(circle, rgba(255, 230, 90, 0.9) 0%, rgba(255, 230, 90, 0.25) 35%, transparent 70%);
+}
+
+body.disco-active .disco-light {
+  animation: disco-light-shimmer 1.8s ease-in-out infinite;
+  animation-delay: var(--dl-delay);
+}
+
+// Party lights in the robots' eyes for the duration.
+body.disco-active .robot-eye {
+  animation: robot-blink 4.5s infinite, disco-eye-glow 1s linear infinite;
+}
+
+@keyframes disco-dim-fade {
+  0%, 100% { opacity: 0; }
+  18%, 85% { opacity: 0.6; }
+}
+
+@keyframes disco-floor-fade {
+  0%, 100% { opacity: 0; }
+  18%, 85% { opacity: 0.12; }
+}
+
+@keyframes disco-floor-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// The ball's own box is offset by -32px/-32px (half its 64px diameter) so
+// .disco-ball-track's translateY lands on the ball's *center*. The string
+// must stop exactly at the ball's *top* edge, i.e. one radius short of that
+// same center point.
+@keyframes disco-string-extend {
+  0%, 100% { height: 0; }
+  18%, 85% { height: calc(42vh - 32px); }
+}
+
+@keyframes disco-ball-drop {
+  0%, 100% { transform: translateY(-160px); }
+  18%, 85% { transform: translateY(42vh); }
+}
+
+// Slides the tile grid sideways by an exact multiple of its own 8px tile
+// size, so the loop seam is invisible - this reads as the ball spinning on
+// its (vertical) string axis instead of spinning flat like a coin.
+@keyframes disco-ball-spin {
+  from { transform: translateX(0); }
+  to { transform: translateX(-32px); }
+}
+
+@keyframes disco-light-shimmer {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 0.85; transform: scale(1); }
+}
+
+@keyframes disco-eye-glow {
+  0% { background: #ff3fc4; box-shadow: 0 0 6px #ff3fc4; }
+  33% { background: #3fd4ff; box-shadow: 0 0 6px #3fd4ff; }
+  66% { background: #ffe23f; box-shadow: 0 0 6px #ffe23f; }
+  100% { background: #ff3fc4; box-shadow: 0 0 6px #ff3fc4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.glitch-active,
-  body.glitch-active .fine-snow,
-  body.glitch-active .red-glitch-lines,
-  body.glitch-active::after,
-  body.glitch-active .glitch-message {
+  body.disco-active,
+  body.disco-active .disco-dim,
+  body.disco-active .disco-floor,
+  body.disco-active .disco-string,
+  body.disco-active .disco-ball-track,
+  body.disco-active .disco-ball-texture,
+  body.disco-active .disco-light,
+  body.disco-active .robot-eye {
     animation: none;
   }
 }

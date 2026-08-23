@@ -1,8 +1,8 @@
 /*
  * Dynamic elements for the profile ("about") page: role rotator, scroll
  * reveal, interactive photo tilt, a small family of walking robot mascots,
- * and a hidden glitch easter egg. Only loaded on the about page (see about.liquid), and
- * every effect degrades to a static/no-op state under
+ * and a hidden disco-ball easter egg. Only loaded on the about page (see
+ * about.liquid), and every effect degrades to a static/no-op state under
  * prefers-reduced-motion.
  */
 document.addEventListener("DOMContentLoaded", function () {
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initScrollReveal(prefersReducedMotion);
   initPhotoTilt(prefersReducedMotion);
   initRobot(prefersReducedMotion);
-  initGlitchEasterEgg(prefersReducedMotion);
+  initDiscoParty(prefersReducedMotion);
 });
 
 function initRoleRotator(prefersReducedMotion) {
@@ -143,7 +143,7 @@ function initRobot(prefersReducedMotion) {
   function wave(robot, duration) {
     robot.figure.classList.remove("walking");
     robot.figure.classList.add("waving");
-    setTimeout(function () {
+    robot.waveTimer = setTimeout(function () {
       robot.figure.classList.remove("waving");
       robot.paused = false;
       scheduleIdle(robot);
@@ -158,6 +158,25 @@ function initRobot(prefersReducedMotion) {
       wave(robot, 1200 + Math.random() * 800);
     }, delay);
   }
+
+  // Dancefloor mode: stop patrolling and wiggle in place for the duration
+  // of the disco easter egg (see initDiscoParty), then resume as normal.
+  document.addEventListener("disco:start", function () {
+    robots.forEach(function (robot) {
+      clearTimeout(robot.waveTimer);
+      robot.paused = true;
+      robot.figure.classList.remove("walking", "waving");
+      robot.figure.classList.add("dancing");
+    });
+  });
+
+  document.addEventListener("disco:end", function () {
+    robots.forEach(function (robot) {
+      robot.figure.classList.remove("dancing");
+      robot.paused = false;
+      scheduleIdle(robot);
+    });
+  });
 
   function step() {
     var maxX = window.innerWidth - size - 10;
@@ -197,66 +216,25 @@ function initRobot(prefersReducedMotion) {
   requestAnimationFrame(step);
 }
 
-function initGlitchEasterEgg(prefersReducedMotion) {
+function initDiscoParty(prefersReducedMotion) {
   if (prefersReducedMotion) return;
 
-  var trigger = document.getElementById("glitch-trigger");
+  var trigger = document.getElementById("disco-trigger");
   var photo = document.querySelector(".profile img.rounded-circle");
   if (!trigger) return;
 
   var active = false;
-  var jumpTimer = null;
-
-  function randomBetween(min, max) {
-    return min + Math.random() * (max - min);
-  }
-
-  // A real corrupted frame doesn't ease in and out - it snaps. Most jumps
-  // are tiny and furtive; occasionally (~15%) a big violent one lands.
-  function fireGlitchJump() {
-    var isBig = Math.random() < 0.15;
-    var magnitude = isBig ? randomBetween(16, 38) : randomBetween(1, 5);
-    var skew = isBig ? randomBetween(-14, 14) : randomBetween(-2, 2);
-    var x = randomBetween(-magnitude, magnitude);
-    var y = randomBetween(-magnitude * 0.5, magnitude * 0.5);
-
-    document.body.style.transition = "none";
-    document.body.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) skewX(" + skew.toFixed(1) + "deg)";
-    document.body.style.filter = isBig
-      ? "hue-rotate(" + Math.round(randomBetween(60, 300)) + "deg) saturate(" + randomBetween(2, 6).toFixed(1) + ") contrast(" + randomBetween(1.3, 3).toFixed(1) + ")"
-      : "saturate(" + randomBetween(1, 1.6).toFixed(1) + ")";
-
-    var holdTime = isBig ? randomBetween(60, 140) : randomBetween(15, 45);
-    setTimeout(function () {
-      document.body.style.transform = "";
-      document.body.style.filter = "";
-    }, holdTime);
-  }
-
-  function scheduleNextJump() {
-    if (!active) return;
-    // Mostly rapid-fire, with occasional short lulls so the rhythm never
-    // settles into something predictable.
-    var delay = Math.random() < 0.2 ? randomBetween(220, 420) : randomBetween(30, 140);
-    jumpTimer = setTimeout(function () {
-      fireGlitchJump();
-      scheduleNextJump();
-    }, delay);
-  }
 
   function activate() {
     if (active) return;
     active = true;
-    document.body.classList.add("glitch-active");
-    scheduleNextJump();
+    document.body.classList.add("disco-active");
+    document.dispatchEvent(new CustomEvent("disco:start"));
     setTimeout(function () {
       active = false;
-      clearTimeout(jumpTimer);
-      document.body.classList.remove("glitch-active");
-      document.body.style.transform = "";
-      document.body.style.filter = "";
-      document.body.style.transition = "";
-    }, 5000);
+      document.body.classList.remove("disco-active");
+      document.dispatchEvent(new CustomEvent("disco:end"));
+    }, 8000);
   }
 
   trigger.addEventListener("click", activate);
