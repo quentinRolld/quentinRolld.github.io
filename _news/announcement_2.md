@@ -1,8 +1,8 @@
 ---
 layout: post
-date: January 2026
+date: May 2026
 inline: true
 related_posts: false
 ---
 
-Submission accepted at ICRA 2026 🎉🎉🎉
+Submission to CoRL 2026

@@ -1,9 +1,8 @@
 ---
 layout: post
-date: September 2025
+date: January 2026
 inline: true
 related_posts: false
 ---
 
-Assistant Professor at Sorbonne University for the year 2025/2026
-teaching Imitation Learning and Reinforcement Learning to 1st and 2nd year of master
+Submission accepted at ICRA 2026 🎉🎉🎉

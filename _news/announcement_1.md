@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Submission to CoRL 2026
+Accepted at CoRL 2026 🎉🎉🎉 🧠🤖
