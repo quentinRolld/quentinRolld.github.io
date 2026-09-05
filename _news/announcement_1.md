@@ -1,8 +1,8 @@
 ---
 layout: post
-date: May 2026
+date: September 2026
 inline: true
 related_posts: false
 ---
 
-Accepted at CoRL 2026 🎉🎉🎉 🧠🤖
+Publication accepted at CoRL 2026 🎉🎉🎉 🧠🤖

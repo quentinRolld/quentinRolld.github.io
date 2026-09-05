@@ -6,9 +6,10 @@ subtitle: <a href='#'>PhD candidate - CEA List - INRIA Nancy</a>
 
 roles:
   - PhD candidate
-  - Robotics
+  - Intelligent Robotics
   - Computer Vision
   - Imitation Learning
+  - Reinforcement Learning
   - Anomaly Detection
 
 profile:
