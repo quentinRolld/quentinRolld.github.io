@@ -590,12 +590,12 @@ body.disco-active .disco-ball-track {
   animation: disco-ball-drop 8s cubic-bezier(0.22, 0.75, 0.3, 1) forwards;
 }
 
-// A single circular element: the tile grid is just two more background
-// layers, animated via background-position instead of a separate
-// oversized child that has to be clipped. Nothing ever overflows the
-// element's own box, so there's no rectangle edge to leak past the
-// circle in the first place (the previous sliding-child approach hit
-// exactly that in Safari, even with clip-path).
+// A static mirror ball: small square tiles (grid lines in both
+// directions) shaded like a chrome sphere, with a fixed highlight. No
+// animated layer or rotation — every attempt at simulating spin (whole-
+// element rotate, an oversized sliding child, animated background-
+// position) ended up showing a rectangular edge somewhere, so the ball
+// just hangs and catches the light instead.
 .disco-ball {
   position: absolute;
   top: -32px;
@@ -609,15 +609,6 @@ body.disco-active .disco-ball-track {
     repeating-linear-gradient(90deg, rgba(18, 22, 30, 0.45) 0 1px, transparent 1px 8px),
     radial-gradient(circle at 45% 40%, #f2f5f9 0%, #cad2de 45%, #97a2b5 75%, #6b7284 100%);
   box-shadow: 0 0 22px rgba(255, 255, 255, 0.55), 0 0 55px rgba(255, 255, 255, 0.25), inset -8px -8px 16px rgba(0, 0, 0, 0.4);
-}
-
-// Only the vertical-line layer (3rd) needs to move: it's what makes the
-// facets appear to wrap around a sphere spinning on the string's axis.
-// The highlight and shading (1st and 4th layers) stay put, like a fixed
-// light source; the horizontal-line layer (2nd) wouldn't visibly change
-// from a horizontal shift, so it's left alone too.
-body.disco-active .disco-ball {
-  animation: disco-ball-spin 1s linear infinite;
 }
 
 // The mounting cap where the string attaches. Lives on the (non-spinning)
@@ -710,18 +701,6 @@ body.disco-active .robot-eye {
   18%, 85% { transform: translateY(42vh); }
 }
 
-// Slides the tile grid sideways by an exact multiple of its own 8px tile
-// size, so the loop seam is invisible - this reads as the ball spinning on
-// its (vertical) string axis instead of spinning flat like a coin.
-// Background layers in order: highlight, horizontal lines, vertical
-// lines, shading. Shifting the vertical-line layer by any multiple of
-// its 8px tile width keeps the loop seamless; -32px matches the
-// original sliding-texture speed.
-@keyframes disco-ball-spin {
-  from { background-position: 0 0, 0 0, 0 0, 0 0; }
-  to   { background-position: 0 0, 0 0, -32px 0, 0 0; }
-}
-
 @keyframes disco-light-shimmer {
   0%, 100% { opacity: 0; transform: scale(0.6); }
   50% { opacity: 0.85; transform: scale(1); }
@@ -740,7 +719,6 @@ body.disco-active .robot-eye {
   body.disco-active .disco-floor,
   body.disco-active .disco-string,
   body.disco-active .disco-ball-track,
-  body.disco-active .disco-ball,
   body.disco-active .disco-light,
   body.disco-active .robot-eye {
     animation: none;
