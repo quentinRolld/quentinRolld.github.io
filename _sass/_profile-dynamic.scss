@@ -540,22 +540,6 @@ body.disco-active .disco-dim {
   animation: disco-dim-fade 8s ease forwards;
 }
 
-.disco-floor {
-  display: none;
-}
-
-body.disco-active .disco-floor {
-  display: block;
-  position: fixed;
-  inset: 0;
-  z-index: 9996;
-  pointer-events: none;
-  background: conic-gradient(from 0deg, #ff3fc4, #3fd4ff, #ffe23f, #6bff3f, #ff3fc4);
-  opacity: 0;
-  mix-blend-mode: color-dodge;
-  animation: disco-floor-fade 8s ease forwards, disco-floor-spin 6s linear infinite;
-}
-
 .disco-string {
   display: none;
 }
@@ -590,12 +574,11 @@ body.disco-active .disco-ball-track {
   animation: disco-ball-drop 8s cubic-bezier(0.22, 0.75, 0.3, 1) forwards;
 }
 
-// A static mirror ball: small square tiles (grid lines in both
-// directions) shaded like a chrome sphere, with a fixed highlight. No
-// animated layer or rotation — every attempt at simulating spin (whole-
-// element rotate, an oversized sliding child, animated background-
-// position) ended up showing a rectangular edge somewhere, so the ball
-// just hangs and catches the light instead.
+// A mirror ball: small square tiles (grid lines in both directions)
+// shaded like a chrome sphere, with a fixed highlight. It "spins" by
+// animating background-position on the tile layers only (see
+// disco-ball-spin below), never by moving or resizing the element
+// itself, so there's no rectangle that can overflow its circular shape.
 .disco-ball {
   position: absolute;
   top: -32px;
@@ -609,6 +592,10 @@ body.disco-active .disco-ball-track {
     repeating-linear-gradient(90deg, rgba(18, 22, 30, 0.45) 0 1px, transparent 1px 8px),
     radial-gradient(circle at 45% 40%, #f2f5f9 0%, #cad2de 45%, #97a2b5 75%, #6b7284 100%);
   box-shadow: 0 0 22px rgba(255, 255, 255, 0.55), 0 0 55px rgba(255, 255, 255, 0.25), inset -8px -8px 16px rgba(0, 0, 0, 0.4);
+}
+
+body.disco-active .disco-ball {
+  animation: disco-ball-spin 1s linear infinite;
 }
 
 // The mounting cap where the string attaches. Lives on the (non-spinning)
@@ -677,16 +664,6 @@ body.disco-active .robot-eye {
   18%, 85% { opacity: 0.6; }
 }
 
-@keyframes disco-floor-fade {
-  0%, 100% { opacity: 0; }
-  18%, 85% { opacity: 0.12; }
-}
-
-@keyframes disco-floor-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 // The ball's own box is offset by -32px/-32px (half its 64px diameter) so
 // .disco-ball-track's translateY lands on the ball's *center*. The string
 // must stop exactly at the ball's *top* edge, i.e. one radius short of that
@@ -699,6 +676,16 @@ body.disco-active .robot-eye {
 @keyframes disco-ball-drop {
   0%, 100% { transform: translateY(-160px); }
   18%, 85% { transform: translateY(42vh); }
+}
+
+// Background layers in order: highlight, horizontal lines, vertical
+// lines, shading. Shifting only the vertical-line layer by a multiple
+// of its 8px tile width makes the facets appear to wrap around a
+// sphere spinning on the string's axis, with a seamless loop; the
+// highlight and shading stay put, like a fixed light source.
+@keyframes disco-ball-spin {
+  from { background-position: 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 0 0, 0 0, -32px 0, 0 0; }
 }
 
 @keyframes disco-light-shimmer {
@@ -716,9 +703,9 @@ body.disco-active .robot-eye {
 @media (prefers-reduced-motion: reduce) {
   body.disco-active,
   body.disco-active .disco-dim,
-  body.disco-active .disco-floor,
   body.disco-active .disco-string,
   body.disco-active .disco-ball-track,
+  body.disco-active .disco-ball,
   body.disco-active .disco-light,
   body.disco-active .robot-eye {
     animation: none;
