@@ -14,7 +14,7 @@ roles:
 
 profile:
   align: right
-  image: prof_pic.jpeg
+  image: prof_pic_4.jpg
   image_circular: true # crops the image to make it circular
   more_info: >
     <p>Centre CEA Nano-INNOV</p>
